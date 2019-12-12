@@ -1,0 +1,110 @@
+I"S><p>이번 세미나의 중심내용은 <code class="highlighter-rouge">git reset</code>, <code class="highlighter-rouge">git checkout</code> 명령어와 <strong>HEAD</strong>, <strong>master</strong> 였다.</p>
+
+<p>1일차에서 배운 <code class="highlighter-rouge">git log</code>는 기록 된 메시지들을 볼 수 있는 명령어였다.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">log</span>
+<span class="n">commit</span> <span class="mi">1</span><span class="n">b5db033fac67ab86f6f166c3ad6e101411cd906</span> <span class="p">(</span><span class="no">HEAD</span> <span class="o">-&gt;</span> <span class="n">master</span><span class="p">)</span>
+<span class="no">Author</span><span class="p">:</span> <span class="no">HeumHeum2</span> <span class="o">&lt;</span><span class="n">jwh6295</span><span class="vi">@gmail</span><span class="p">.</span><span class="nf">com</span><span class="o">&gt;</span>
+<span class="no">Date</span><span class="p">:</span>   <span class="no">Wed</span> <span class="no">Dec</span> <span class="mi">11</span> <span class="mi">15</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">47</span> <span class="mi">2019</span> <span class="o">+</span><span class="mi">0900</span>
+
+    <span class="n">working</span> <span class="mi">5</span>
+
+<span class="n">commit</span> <span class="mi">103</span><span class="n">e78de24c45cd227f489bc255c831e6cdb09e0</span>
+<span class="no">Author</span><span class="p">:</span> <span class="no">HeumHeum2</span> <span class="o">&lt;</span><span class="n">jwh6295</span><span class="vi">@gmail</span><span class="p">.</span><span class="nf">com</span><span class="o">&gt;</span>
+<span class="no">Date</span><span class="p">:</span>   <span class="no">Wed</span> <span class="no">Dec</span> <span class="mi">11</span> <span class="mi">15</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">31</span> <span class="mi">2019</span> <span class="o">+</span><span class="mi">0900</span>
+
+    <span class="n">working</span> <span class="mi">4</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">git log</code>를 실행시키게 되면 맨 처음 <strong>HEAD</strong>를 본다고 한다. <strong>HEAD -&gt; master</strong> 이 형태를 볼 수 있는데, <strong>HEAD</strong>가 <strong>master</strong>를 가르키고 있구나 정도만 이해하면 될 것 같다.</p>
+
+<p>commit ID는 commit 옆에 있는<code class="highlighter-rouge">1b5db033fac67ab86f6f166c3ad6e101411cd906</code> 부분으로 Author email, files, commit message, parent들을 <strong>Hash</strong>로 암호화(Encryption) 한 것이다. 따라서 복호화(Decryption)를 하게 되면 parent의 commit ID도 가져올 수 있어 위의 <code class="highlighter-rouge">git log</code>처럼 순서대로 기록이 찍힌다. 다만 parent가 더 이상 없을 경우 실행을 멈춘다.</p>
+
+<h3>$ git reset</h3>
+<p><code class="highlighter-rouge">git reset</code>은 삭제와 복구를 할 수 있는 명령어라고 한다.
+해당 명령어 사용 방법은 <code class="highlighter-rouge">git reset &lt;commit id&gt;</code>로 현재 기록하고 있었던 파일들이 동작을 이상하게 하거나 삭제해야 할 경우, 이전 기록의 commit ID로 복구가 되고 이 후에 기록했던 파일들은 삭제가 된다.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">reset</span> <span class="mi">103</span><span class="n">e78de24c45cd227f489bc255c831e6cdb09e0</span>
+<span class="no">Unstaged</span> <span class="n">changes</span> <span class="n">after</span> <span class="ss">reset:
+</span><span class="no">M</span>       <span class="n">work</span><span class="p">.</span><span class="nf">txt</span>
+<span class="no">M</span>       <span class="n">work3</span><span class="p">.</span><span class="nf">txt</span>           <span class="c1"># 파일 내용들이 변경되었음을 확인할 수 있음</span>
+
+<span class="n">git</span> <span class="n">log</span>
+<span class="n">commit</span> <span class="mi">103</span><span class="n">e78de24c45cd227f489bc255c831e6cdb09e0</span> <span class="p">(</span><span class="no">HEAD</span> <span class="o">-&gt;</span> <span class="n">master</span><span class="p">)</span>
+<span class="no">Author</span><span class="p">:</span> <span class="no">HeumHeum2</span> <span class="o">&lt;</span><span class="n">jwh6295</span><span class="vi">@gmail</span><span class="p">.</span><span class="nf">com</span><span class="o">&gt;</span>
+<span class="no">Date</span><span class="p">:</span>   <span class="no">Wed</span> <span class="no">Dec</span> <span class="mi">11</span> <span class="mi">15</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">31</span> <span class="mi">2019</span> <span class="o">+</span><span class="mi">0900</span>
+
+    <span class="n">working</span> <span class="mi">4</span></code></pre></figure>
+
+<p>여기서 <strong>master</strong>가 <strong>1b5db…</strong> 에서 <strong>103e7…</strong>로 commit ID가 변경되었음을 알 수 있었다. 그런데 <strong>1b5db…</strong>은 진짜로 삭제되었을까?? 다시 <code class="highlighter-rouge">git reset</code>을 사용해서 확인해보자.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">reset</span> <span class="mi">1</span><span class="n">b5db033fac67ab86f6f166c3ad6e101411cd906</span>
+<span class="no">Unstaged</span> <span class="n">changes</span> <span class="n">after</span> <span class="ss">reset:
+</span><span class="no">M</span>       <span class="n">work</span><span class="p">.</span><span class="nf">txt</span></code></pre></figure>
+
+<p>work.txt가 변경되었음을 알려준다. <code class="highlighter-rouge">git log</code>를 찍어서 확인해보면</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">log</span>
+<span class="n">commit</span> <span class="mi">1</span><span class="n">b5db033fac67ab86f6f166c3ad6e101411cd906</span> <span class="p">(</span><span class="no">HEAD</span> <span class="o">-&gt;</span> <span class="n">master</span><span class="p">)</span>
+<span class="no">Author</span><span class="p">:</span> <span class="no">HeumHeum2</span> <span class="o">&lt;</span><span class="n">jwh6295</span><span class="vi">@gmail</span><span class="p">.</span><span class="nf">com</span><span class="o">&gt;</span>
+<span class="no">Date</span><span class="p">:</span>   <span class="no">Wed</span> <span class="no">Dec</span> <span class="mi">11</span> <span class="mi">15</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">47</span> <span class="mi">2019</span> <span class="o">+</span><span class="mi">0900</span>
+
+    <span class="n">working</span> <span class="mi">5</span>
+
+<span class="n">commit</span> <span class="mi">103</span><span class="n">e78de24c45cd227f489bc255c831e6cdb09e0</span>
+<span class="no">Author</span><span class="p">:</span> <span class="no">HeumHeum2</span> <span class="o">&lt;</span><span class="n">jwh6295</span><span class="vi">@gmail</span><span class="p">.</span><span class="nf">com</span><span class="o">&gt;</span>
+<span class="no">Date</span><span class="p">:</span>   <span class="no">Wed</span> <span class="no">Dec</span> <span class="mi">11</span> <span class="mi">15</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">31</span> <span class="mi">2019</span> <span class="o">+</span><span class="mi">0900</span>
+
+    <span class="n">working</span> <span class="mi">4</span></code></pre></figure>
+
+<p>다시 복원이 되었다. 즉, <strong>Git 불변성</strong>을 확인 할 수 있었다. 만약 <code class="highlighter-rouge">git reset</code>으로 이전 버전으로 복구한 후 <code class="highlighter-rouge">git commit -m</code>을 했을 때 어떻게 되는지는 각자 해보면 좋을 것 같다.</p>
+
+<h3>$ git checkout</h3>
+<p><code class="highlighter-rouge">git checkout</code>은 시간여행을 해주는 명령어라고 설명해주셨다. 명령어 사용법은 <code class="highlighter-rouge">git reset</code>과 동일하다.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">checkout</span> <span class="mi">103</span><span class="n">e78d</span>
+<span class="no">Note</span><span class="p">:</span> <span class="n">switching</span> <span class="n">to</span> <span class="s1">'103e78d'</span><span class="o">.</span>  <span class="c1"># 103e78d라는 commend ID로 변경되었다는 것을 알 수 있다.</span>
+
+<span class="no">You</span> <span class="n">are</span> <span class="k">in</span> <span class="s1">'detached HEAD'</span> <span class="n">state</span><span class="o">.</span> <span class="no">You</span> <span class="n">can</span> <span class="n">look</span> <span class="n">around</span><span class="p">,</span> <span class="n">make</span> <span class="n">experimental</span>
+<span class="n">changes</span> <span class="n">and</span> <span class="n">commit</span> <span class="n">them</span><span class="p">,</span> <span class="n">and</span> <span class="n">you</span> <span class="n">can</span> <span class="n">discard</span> <span class="n">any</span> <span class="n">commits</span> <span class="n">you</span> <span class="n">make</span> <span class="k">in</span> <span class="n">this</span>
+<span class="n">state</span> <span class="n">without</span> <span class="n">impacting</span> <span class="n">any</span> <span class="n">branches</span> <span class="n">by</span> <span class="n">switching</span> <span class="n">back</span> <span class="n">to</span> <span class="n">a</span> <span class="n">branch</span><span class="o">.</span>
+
+<span class="no">If</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">branch</span> <span class="n">to</span> <span class="n">retain</span> <span class="n">commits</span> <span class="n">you</span> <span class="n">create</span><span class="p">,</span> <span class="n">you</span> <span class="n">may</span>
+<span class="k">do</span> <span class="n">so</span> <span class="p">(</span><span class="n">now</span> <span class="n">or</span> <span class="n">later</span><span class="p">)</span> <span class="n">by</span> <span class="n">using</span> <span class="o">-</span><span class="n">c</span> <span class="n">with</span> <span class="n">the</span> <span class="n">switch</span> <span class="n">command</span><span class="o">.</span> <span class="no">Example</span><span class="p">:</span>
+
+  <span class="n">git</span> <span class="n">switch</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">new</span><span class="o">-</span><span class="n">branch</span><span class="o">-</span><span class="nb">name</span><span class="o">&gt;</span>
+
+<span class="no">Or</span> <span class="n">undo</span> <span class="n">this</span> <span class="n">operation</span> <span class="ss">with:
+
+  </span><span class="n">git</span> <span class="n">switch</span> <span class="o">-</span>
+
+<span class="no">Turn</span> <span class="n">off</span> <span class="n">this</span> <span class="n">advice</span> <span class="n">by</span> <span class="n">setting</span> <span class="n">config</span> <span class="n">variable</span> <span class="n">advice</span><span class="p">.</span><span class="nf">detachedHead</span> <span class="n">to</span> <span class="kp">false</span>
+
+<span class="no">HEAD</span> <span class="n">is</span> <span class="n">now</span> <span class="n">at</span> <span class="mi">103</span><span class="n">e78d</span> <span class="n">working</span> <span class="mi">4</span>  <span class="c1"># commend ID로 인해 파일들이 변경되었음을 알려줌.</span>
+<span class="no">M</span>       <span class="n">work</span><span class="p">.</span><span class="nf">txt</span>
+
+<span class="c1"># git log를 찍어 기록 확인해보자.</span>
+
+<span class="n">git</span> <span class="n">log</span>
+<span class="n">commit</span> <span class="mi">103</span><span class="n">e78de24c45cd227f489bc255c831e6cdb09e0</span> <span class="p">(</span><span class="no">HEAD</span><span class="p">)</span>
+<span class="no">Author</span><span class="p">:</span> <span class="no">HeumHeum2</span> <span class="o">&lt;</span><span class="n">jwh6295</span><span class="vi">@gmail</span><span class="p">.</span><span class="nf">com</span><span class="o">&gt;</span>
+<span class="no">Date</span><span class="p">:</span>   <span class="no">Wed</span> <span class="no">Dec</span> <span class="mi">11</span> <span class="mi">15</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">31</span> <span class="mi">2019</span> <span class="o">+</span><span class="mi">0900</span>
+
+    <span class="n">working</span> <span class="mi">4</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">git checkout</code>을 했더니 <strong>HEAD -&gt; master</strong>가 <strong>HEAD</strong>로 변경 되어있음을 볼 수 있다. 그렇다면 <strong>master</strong>는 어디에 있을까? <code class="highlighter-rouge">git log</code>에 <code class="highlighter-rouge">--all</code> 옵션을 붙여서 찾아보자.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">all</span>
+<span class="n">commit</span> <span class="mi">1</span><span class="n">b5db033fac67ab86f6f166c3ad6e101411cd906</span> <span class="p">(</span><span class="n">master</span><span class="p">)</span>
+<span class="no">Author</span><span class="p">:</span> <span class="no">HeumHeum2</span> <span class="o">&lt;</span><span class="n">jwh6295</span><span class="vi">@gmail</span><span class="p">.</span><span class="nf">com</span><span class="o">&gt;</span>
+<span class="no">Date</span><span class="p">:</span>   <span class="no">Wed</span> <span class="no">Dec</span> <span class="mi">11</span> <span class="mi">15</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">47</span> <span class="mi">2019</span> <span class="o">+</span><span class="mi">0900</span>
+
+    <span class="n">working</span> <span class="mi">5</span>
+
+<span class="n">commit</span> <span class="mi">103</span><span class="n">e78de24c45cd227f489bc255c831e6cdb09e0</span> <span class="p">(</span><span class="no">HEAD</span><span class="p">)</span>
+<span class="no">Author</span><span class="p">:</span> <span class="no">HeumHeum2</span> <span class="o">&lt;</span><span class="n">jwh6295</span><span class="vi">@gmail</span><span class="p">.</span><span class="nf">com</span><span class="o">&gt;</span>
+<span class="no">Date</span><span class="p">:</span>   <span class="no">Wed</span> <span class="no">Dec</span> <span class="mi">11</span> <span class="mi">15</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">31</span> <span class="mi">2019</span> <span class="o">+</span><span class="mi">0900</span>
+
+    <span class="n">working</span> <span class="mi">4</span></code></pre></figure>
+
+<p><strong>master</strong>를 보면 최근에 기록한 곳의 commit ID를 가지고 있다고 한다. 여기에서 <strong>master</strong>는 최근 <code class="highlighter-rouge">git commit</code>한 commit ID를 가진다는 것을 알 수 있었고, <strong>HEAD</strong>는 내가 작업하고 있는 현재 위치를 알려준다.</p>
+:ET

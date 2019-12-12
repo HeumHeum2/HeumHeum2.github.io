@@ -14,11 +14,11 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Heum's blog
-author: Yous
+author: HeumHeum2
 description: Let's do the **hard work like it's easy**.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://HeumHeum2.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-lang: en
+lang: ko
 timezone: UTC
 exclude:
   - Gemfile
@@ -36,8 +36,9 @@ twitter_username:
 twitter_image:
 facebook_app_id:
 facebook_image:
-google_analytics:
-comments: false
+google_analytics: UA-NNNNNNNN-N
+comments: true
+disqus_shortname: Heum's blog
 
 # Plugins
 plugins:

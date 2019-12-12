@@ -1,0 +1,17 @@
+I"�<p>2일차 세미나의 중심내용은 <code class="highlighter-rouge">git reset</code>, <code class="highlighter-rouge">git checkout</code> 명령어와 <strong>HEAD</strong>, <strong>master</strong> 였다.</p>
+
+<p>1일차에서 배운 <code class="highlighter-rouge">git log</code>는 기록 된 메시지들을 볼 수 있는 명령어였다.</p>
+<h3>$ git log</h3>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">commit</span> <span class="mi">8</span><span class="n">b01d49dbc13ebca0afa726bf343bec65d0a9322</span> <span class="p">(</span><span class="no">HEAD</span> <span class="o">-&gt;</span> <span class="n">master</span><span class="p">,</span> <span class="n">origin</span><span class="o">/</span><span class="n">master</span><span class="p">,</span> <span class="n">origin</span><span class="o">/</span><span class="no">HEAD</span><span class="p">)</span>
+<span class="no">Author</span><span class="p">:</span> <span class="n">heumheum2</span> <span class="o">&lt;</span><span class="n">jwh6295</span><span class="vi">@gmail</span><span class="p">.</span><span class="nf">com</span><span class="o">&gt;</span>
+<span class="no">Date</span><span class="p">:</span>   <span class="no">Thu</span> <span class="no">Dec</span> <span class="mi">12</span> <span class="mo">02</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">40</span> <span class="mi">2019</span> <span class="o">+</span><span class="mi">0900</span>
+
+    <span class="no">Edit</span> <span class="no">First</span> <span class="n">git</span> <span class="n">md</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">git log</code>를 실행시키게 되면 Git은 맨 처음 <strong>HEAD</strong>를 본다고 한다. 처음에 <strong>HEAD -&gt; master</strong> 이 형태를 많이 볼 수 있는데, <strong>HEAD</strong>가 <strong>master</strong>를 가르키고 있다는 뜻이고, <strong>master</strong>는 최근 <code class="highlighter-rouge">git commit -m &lt;commit message&gt;</code>명령으로 얻은 <strong>Commit ID</strong>를 가지고 있어, 해당 <strong>Commit ID</strong>로 파일들과 <strong>Commit Message</strong>를 가져올 수 있다고 한다. 그리고 <strong>Commit ID</strong>는 등록한 이메일, 파일들, <strong>Commit Message</strong>, <strong>parent</strong>들을 해쉬로 암호화 한 것이기에 복호화를 하게 되면 <strong>parent</strong>의 <strong>Commit ID</strong>도 가져올 수 있어 순서대로 <strong>Log</strong>가 찍힌다. 다만 <strong>parent</strong>가 더 이상 없을 경우 명령어 실행을 멈춘다.</p>
+
+<p><code class="highlighter-rouge">git reset</code>은 삭제와 복구를 할 수 있는 명령어라고 한다.</p>
+<h3>$ git reset</h3>
+<p>해당 명령어 사용방법은 <code class="highlighter-rouge">git reset &lt;commit id&gt;</code>로 현재 기록하고 있었던 파일들이 동작을 이상하게 하거나 삭제해야 할 경우, 이전 기록의 <strong>Commit ID</strong>로 복구가 되고 이 후에 기록했던 파일들은 삭제가 된다. 여기서 <strong>master</strong>의 개념과 어제 흥미롭게 한 <strong>Git의 불변성</strong>을 알 수 있었다.</p>
+:ET
