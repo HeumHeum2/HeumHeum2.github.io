@@ -5,7 +5,7 @@
   
   <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" />
-  <updated>2019-12-12T17:58:20+00:00</updated>
+  <updated>2019-12-13T16:46:31+00:00</updated>
   <id>http://localhost:4000//</id>
 
   
@@ -24,6 +24,53 @@
     </author>
   
 
+  
+  
+    <entry xml:lang="ko">
+      
+      <title type="html">Git 공부 3일차</title>
+      
+      
+      <link href="http://localhost:4000/2019/12/13/third-of-git/" rel="alternate" type="text/html" title="Git 공부 3일차" />
+      
+      <published>2019-12-13T00:00:00+00:00</published>
+      <updated>2019-12-13T00:00:00+00:00</updated>
+      <id>http://localhost:4000/2019/12/13/third-of-git</id>
+      <content type="html" xml:base="http://localhost:4000/2019/12/13/third-of-git/">&lt;p&gt;이번 세미나는 &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote add&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt; 명령어와 &lt;strong&gt;협업&lt;/strong&gt;이 중심 내용이였다.&lt;/p&gt;
+
+&lt;h3&gt;$ git merge&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt;는 작업하고 있는 &lt;strong&gt;branch&lt;/strong&gt;들을 합치고 싶을 때 사용하는 명령어다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>HeumHeum2</name>
+          
+          
+        </author>
+      
+
+      
+        <category term="git" />
+      
+        <category term="공부" />
+      
+
+      
+
+      
+        <summary type="html">이번 세미나는 git merge, git remote add, git push, git pull 명령어와 협업이 중심 내용이였다. $ git merge git merge는 작업하고 있는 branch들을 합치고 싶을 때 사용하는 명령어다.</summary>
+      
+
+      
+      
+    </entry>
+  
   
   
     <entry xml:lang="ko">
@@ -280,273 +327,6 @@ Facebook 생활코딩 커뮤니티를 살펴보는 중 &lt;a href=&quot;https://
 
       
         <summary type="html">Git을 사용해 본 경험은 로컬 저장소에 진행하고 있는 프로젝트를 저장시키고, push 라는 명령어를 사용해 GitHub에 올리는게 전부였다. Facebook 생활코딩 커뮤니티를 살펴보는 중 KISA 핀테크 기술지원센터에서 Git에 대한 세미나가 열린다는 글을 보았다. 가격은 무료 였기에 이 기회에 Git에 대해 배우고자 참석했다. 세미나 내용은 Git을 처음 만든 개발자, 배경, 구조, 흐름 순으로 진행되었다. Git을 처음 만든 사람은 Linux를 만든 리누스 토르발스라고 한다.(개인적으로 생각했을 때 Linux도 만들고 Git도 만든 이 사람은 천재가 아닐까 싶다..) Git이 처음 나온 배경은 버전을 만들 때마다, 버전의 이름들이 너무 지저분해지고, 또한 이전 버전의 자료들이 필요 할 경우 용량이 어마어마하게 커졌었다. 이러한 불편함을 해결하고자 Git이 나왔다고 한다. 구조적으론 사용자가 실제 작업을 하는 Working Directory, 실제 작업을 가상의 공간에 담는 Stage Area, Git에 작업이 기록 되어있는 Repository로 되어있다. Git으로 버전관리를 하기 위해선 먼저 작업 공간을 알려줘야 한다. Working Directory에서 git init을 사용해 .git 디렉토리를 생성하면, Git은 ‘아 여기서 작업을 하는구나’ 라고 인식하게 된다. 디렉토리 .git이 Repository이며, 기록을 위해 Working Directory의 작업들을 복사해 Stage Area에 넣어준 다음 Stage Area 작업들을 Repository에 기록하는 순서이다. 세미나에서 git bash를 사용해 ComendLine으로 Git을 다루었다. Git 명령어 git init # 작업 할 폴더에 .git 폴더 생성 git status # Git 상황 확인 git add &amp;lt;filename&amp;gt; # 가상환경에 담기 git commit -m &amp;lt;commit message&amp;gt; # Git에 기록하기 git log # 기록 확인 Git을 기록하기 위해서 가장 먼저 해야되는 것은 상태를 확인하는 것!! git status로 Working Directory 파일들의 생성, 수정, 삭제를 확인 할 수 있다. .git에 기록 시키기 전 Stage Area에 담아야하니 git add &amp;lt;filename&amp;gt;을 사용하면 가상의 공간에 담을 수 있다.(파일 전부를 담으려면 git add .) Repository에 기록하는 명령어는 git commit -m &amp;lt;commit message&amp;gt;을 사용해 가상의 공간에 담겨있는 작업들을 기록했다. -m옵션을 사용하지 않았을 때는 다른 입력창이 나왔는데 편의성과 세미나 시간으로 인해 자세한 건 따로 검색해봐야 할 것 같았다.(참고로 commit -m을 할 때 GitHub 로그인을 시켜줬어야 했다.) 이로써 Git으로 버전을 기록하는 것은 끝이 났다. 이후 git status로 상태를 확인하면 기록 파일들이 없는 것을 볼 수 있었고, 기록된 정보들을 보기 위해 git log를 사용했다. git log에서 commit 옆에 숫자와 영어로 되어있는 Commit ID와 내가 입력한 Commit Message 그리고 HEAD-&amp;gt;master를 볼 수 있었다. 세미나에서 Commit ID가 어떻게 만들어지는지도 알려주었는데, 나의 이메일과 기록한 파일, Commit Message 그리고 Parent를 합쳐 해쉬화 하여 Commit ID를 만든다고 한다. 마치며 내일은 git reset 명령어와 git checkout 그리고, HEAD와 mater에 대해서 알려준다고 한다. 살짝 맛보기로 Git은 불변하기에 파일들을 삭제하지도 변경하지도 않는다는 말로 호기심을 자극했다.. Git이 내부적으로 어떻게 돌아가는지 처음 알게 된 세미나였다. 앞으로도 Git을 써야하는 입장으로 굉장히 도움이 되었고, 같이 개발을 공부하는 사람들에게 Git을 전파해주고 싶어졌다.</summary>
-      
-
-      
-      
-    </entry>
-  
-  
-  
-    <entry>
-      
-      <title type="html">Welcome To Jekyll</title>
-      
-      
-      <link href="http://localhost:4000/2017/01/05/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome To Jekyll" />
-      
-      <published>2017-01-05T00:00:00+00:00</published>
-      <updated>2017-01-05T00:00:00+00:00</updated>
-      <id>http://localhost:4000/2017/01/05/welcome-to-jekyll</id>
-      <content type="html" xml:base="http://localhost:4000/2017/01/05/welcome-to-jekyll/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      
-        <author>
-            <name>HeumHeum2</name>
-          
-          
-        </author>
-      
-
-      
-
-      
-
-      
-        <summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated. To add new posts, simply add a file in the _posts directory that follows the convention YYYY-MM-DD-name-of-post.ext and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works. Jekyll also offers powerful support for code snippets: def print_hi(name) puts &quot;Hi, #{name}&quot; end print_hi('Tom') #=&amp;gt; prints 'Hi, Tom' to STDOUT. Check out the Jekyll docs for more info on how to get the most out of Jekyll. File all bugs/feature requests at Jekyll’s GitHub repo. If you have questions, you can ask them on Jekyll Talk.</summary>
-      
-
-      
-      
-    </entry>
-  
-  
-  
-    <entry>
-      
-      <title type="html">This post demonstrates post content styles</title>
-      
-      
-      <link href="http://localhost:4000/2017/01/04/this-post-demonstrates-post-content-styles/" rel="alternate" type="text/html" title="This post demonstrates post content styles" />
-      
-      <published>2017-01-04T00:00:00+00:00</published>
-      <updated>2017-01-04T00:00:00+00:00</updated>
-      <id>http://localhost:4000/2017/01/04/this-post-demonstrates-post-content-styles</id>
-      <content type="html" xml:base="http://localhost:4000/2017/01/04/this-post-demonstrates-post-content-styles/">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit.&lt;/p&gt;
-
-&lt;h2&gt;Some great heading (h2)&lt;/h2&gt;
-
-&lt;p&gt;Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu.&lt;/p&gt;
-
-&lt;p&gt;Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;h2&gt;Another great heading (h2)&lt;/h2&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit.&lt;/p&gt;
-
-&lt;h3&gt;Some great subheading (h3)&lt;/h3&gt;
-
-&lt;p&gt;Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum.&lt;/p&gt;
-
-&lt;p&gt;Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc.&lt;/p&gt;
-
-&lt;h3&gt;Some great subheading (h3)&lt;/h3&gt;
-
-&lt;p&gt;Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;This quote will change your life. It will reveal the secrets of the universe, and all the wonders of humanity. Don’t misuse it.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt.&lt;/p&gt;
-
-&lt;h3&gt;Some great subheading (h3)&lt;/h3&gt;
-
-&lt;p&gt;Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum.&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Hello, World!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;h4&gt;You might want a sub-subheading (h4)&lt;/h4&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;h4&gt;But it’s probably overkill (h4)&lt;/h4&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;h3&gt;Oh hai, an unordered list!!&lt;/h3&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;First item, yo&lt;/li&gt;
-  &lt;li&gt;Second item, dawg&lt;/li&gt;
-  &lt;li&gt;Third item, what what?!&lt;/li&gt;
-  &lt;li&gt;Fourth item, fo sheezy my neezy&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;Oh hai, an ordered list!!&lt;/h3&gt;
-
-&lt;p&gt;In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;First item, yo&lt;/li&gt;
-  &lt;li&gt;Second item, dawg&lt;/li&gt;
-  &lt;li&gt;Third item, what what?!&lt;/li&gt;
-  &lt;li&gt;Fourth item, fo sheezy my neezy&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2&gt;Headings are cool! (h2)&lt;/h2&gt;
-
-&lt;p&gt;Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;p&gt;Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;p&gt;Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      
-        <author>
-            <name>Bart Simpson</name>
-          
-          
-        </author>
-      
-
-      
-        <category term="junk" />
-      
-
-      
-
-      
-        <summary type="html">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Some great heading (h2) Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. Another great heading (h2) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Some great subheading (h3) Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Some great subheading (h3) Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. This quote will change your life. It will reveal the secrets of the universe, and all the wonders of humanity. Don’t misuse it. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Some great subheading (h3) Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;p&amp;gt;Hello, World!&amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. You might want a sub-subheading (h4) In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. But it’s probably overkill (h4) In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Oh hai, an unordered list!! In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. First item, yo Second item, dawg Third item, what what?! Fourth item, fo sheezy my neezy Oh hai, an ordered list!! In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. First item, yo Second item, dawg Third item, what what?! Fourth item, fo sheezy my neezy Headings are cool! (h2) Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc.</summary>
-      
-
-      
-      
-    </entry>
-  
-  
-  
-    <entry>
-      
-      <title type="html">Some articles are just so long they deserve a really long title to see if things will break well</title>
-      
-      
-      <link href="http://localhost:4000/2017/01/03/super-long-article/" rel="alternate" type="text/html" title="Some articles are just so long they deserve a really long title to see if things will break well" />
-      
-      <published>2017-01-03T00:00:00+00:00</published>
-      <updated>2017-01-03T00:00:00+00:00</updated>
-      <id>http://localhost:4000/2017/01/03/super-long-article</id>
-      <content type="html" xml:base="http://localhost:4000/2017/01/03/super-long-article/">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      
-        <author>
-            <name>HeumHeum2</name>
-          
-          
-        </author>
-      
-
-      
-        <category term="misc" />
-      
-
-      
-        <category term="lorem" />
-      
-        <category term="ipsum" />
-      
-
-      
-        <summary type="html">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.</summary>
-      
-
-      
-      
-    </entry>
-  
-  
-  
-    <entry>
-      
-      <title type="html">My Example Post</title>
-      
-      
-      <link href="http://localhost:4000/2017/01/02/my-example-post/" rel="alternate" type="text/html" title="My Example Post" />
-      
-      <published>2017-01-02T00:00:00+00:00</published>
-      <updated>2017-01-02T00:00:00+00:00</updated>
-      <id>http://localhost:4000/2017/01/02/my-example-post</id>
-      <content type="html" xml:base="http://localhost:4000/2017/01/02/my-example-post/">&lt;p&gt;Eos eu docendi tractatos sapientem, brute option menandri in vix, quando vivendo accommodare te ius. Nec melius fastidii constituam id, viderer theophrastus ad sit, hinc semper periculis cum id. Noluisse postulant assentior est in, no choro sadipscing repudiandae vix. Vis in euismod delenit dignissim. Ex quod nostrum sit, suas decore animal id ius, nobis solet detracto quo te.&lt;/p&gt;
-
-&lt;p&gt;No laudem altera adolescens has, volumus lucilius eum no. Eam ei nulla audiam efficiantur. Suas affert per no, ei tale nibh sea. Sea ne magna harum, in denique scriptorem sea, cetero alienum tibique ei eos. Labores persequeris referrentur eos ei.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      
-        <author>
-            <name>HeumHeum2</name>
-          
-          
-        </author>
-      
-
-      
-
-      
-
-      
-        <summary type="html">Eos eu docendi tractatos sapientem, brute option menandri in vix, quando vivendo accommodare te ius. Nec melius fastidii constituam id, viderer theophrastus ad sit, hinc semper periculis cum id. Noluisse postulant assentior est in, no choro sadipscing repudiandae vix. Vis in euismod delenit dignissim. Ex quod nostrum sit, suas decore animal id ius, nobis solet detracto quo te. No laudem altera adolescens has, volumus lucilius eum no. Eam ei nulla audiam efficiantur. Suas affert per no, ei tale nibh sea. Sea ne magna harum, in denique scriptorem sea, cetero alienum tibique ei eos. Labores persequeris referrentur eos ei.</summary>
       
 
       
