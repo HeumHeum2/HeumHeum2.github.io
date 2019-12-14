@@ -134,6 +134,7 @@ $ git log --oneline --all --graph
 `git log`를 찍어서 보면 제대로 합성되었음을 확인 할 수 있다.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ---
 
 ## GitHub
