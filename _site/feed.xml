@@ -5,7 +5,7 @@
   
   <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" />
-  <updated>2019-12-13T17:23:48+00:00</updated>
+  <updated>2019-12-14T11:03:09+00:00</updated>
   <id>http://localhost:4000//</id>
 
   
@@ -39,7 +39,127 @@
       <content type="html" xml:base="http://localhost:4000/2019/12/13/third-of-git/">&lt;p&gt;이번 세미나는 &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote add&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt; 명령어와 &lt;strong&gt;협업&lt;/strong&gt;이 중심 내용이였다.&lt;/p&gt;
 
 &lt;h3&gt;$ git merge&lt;/h3&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt;는 작업하고 있는 &lt;strong&gt;branch&lt;/strong&gt;들을 합치고 싶을 때 사용하는 명령어다.&lt;/p&gt;</content>
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt;는 작업하고 있는 &lt;strong&gt;branch&lt;/strong&gt; 들을 합치고 싶을 때 사용하는 명령어다.&lt;/p&gt;
+
+&lt;p&gt;먼저 &lt;strong&gt;master&lt;/strong&gt;에는 m_work.txt 파일을 &lt;strong&gt;exp&lt;/strong&gt;에는 e_work.txt 파일을 만들어 서로 다르게 해주었다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# master files&lt;/span&gt;
+work.txt
+m_work.txt
+
+&lt;span class=&quot;c&quot;&gt;# exp&lt;/span&gt;
+work.txt
+e_work.txt
+
+&lt;span class=&quot;c&quot;&gt;# log&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log &lt;span class=&quot;nt&quot;&gt;--oneline&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--graph&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 63d2d07 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;exp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; working e2
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 682767a working e1
+| &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 3dd3a20 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;HEAD -&amp;gt; master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; working m2
+| &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 5836424 working m1
+|/
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 5bd3f73 working 3
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; b023f81 working 2
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 247a290 working 1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--oneline&lt;/code&gt; 옵션은 한 줄로 보겠다는 옵션이고, &lt;code class=&quot;highlighter-rouge&quot;&gt;-all&lt;/code&gt;은 모든 branch 및 tag의 기록을, &lt;code class=&quot;highlighter-rouge&quot;&gt;--graph&lt;/code&gt;는 그래프로 보여주는 옵션이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt;를 보면 commit ID &lt;strong&gt;5bd3f73&lt;/strong&gt; 이후로 서로 다른 길을 가고 있음을 보여준다. 이 둘을 한번 합쳐보겠다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 현재 HEAD가 위치한 곳은 master이다.&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git merge exp
+Merge made by the &lt;span class=&quot;s1&quot;&gt;'recursive'&lt;/span&gt; strategy.
+ e_work.txt | 2 ++ 
+ 1 file changed, 2 insertions&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;+&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ create mode 100644 e_work.txt
+
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log &lt;span class=&quot;nt&quot;&gt;--oneline&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--graph&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;   81b2063 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;HEAD -&amp;gt; master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Merge branch &lt;span class=&quot;s1&quot;&gt;'exp'&lt;/span&gt;
+|&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+| &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 63d2d07 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;exp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; working e2
+| &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 682767a working e1
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | 3dd3a20 working m2
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | 5836424 working m1
+|/
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 5bd3f73 working 3
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; b023f81 working 2
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 247a290 working 1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt;를 사용하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;create mode 100644 e_work.txt&lt;/code&gt; 부분을 보면, e_work.txt가 &lt;strong&gt;master&lt;/strong&gt;에 새로 생겼음을 알 수 있다. 이로써 다른 파일은 순조롭게 합쳐지는 것을 알 수 있었다.&lt;/p&gt;
+
+&lt;p&gt;만약 같은 파일에서 &lt;strong&gt;branch&lt;/strong&gt;들을 합치고 싶을 때는 어떻게 적용되는지 해보자.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-txt&quot; data-lang=&quot;txt&quot;&gt;(parent)    (master)      (exp)
+0               0           0
+0               0           0
+0               m1          0
+0               0           0
+0               0           e1
+0               0           0
+0               m1          0
+0               0           e1
+0               0           0
+0               m1          e1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;우선 work.txt 파일을 만들고, &lt;strong&gt;master&lt;/strong&gt;와 &lt;strong&gt;exp&lt;/strong&gt;를 파일을 변경해 &lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt;해보았다.&lt;br /&gt;
+합치기 전에 HEAD가 누구를 가르키고 있는지에 따라서 &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge &amp;lt;branch name&amp;gt;&lt;/code&gt;의 branch name을 신경써줘야한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;master&lt;/strong&gt; 에서 &lt;strong&gt;exp&lt;/strong&gt;를 합쳐보자.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git merge exp
+Auto-merging work.txt &lt;span class=&quot;c&quot;&gt;# 자동으로 합쳐준다.&lt;/span&gt;
+CONFLICT &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;content&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: Merge conflict &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;work.txt
+Automatic merge failed&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; fix conflicts and &lt;span class=&quot;k&quot;&gt;then &lt;/span&gt;commit the result.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;conflict&lt;/strong&gt;이 났다고 알려준다. 왜 그런지 살펴보자.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-txt&quot; data-lang=&quot;txt&quot;&gt;(master|MERGING)
+0
+0
+m1
+0
+0
+e1
+0
+m1
+0
+e1
+0
+&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD
+m1
+=======
+e1
+&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; exp&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;다른 것들은 자동으로 합쳐줬지만 마지막 행은 &lt;strong&gt;parent&lt;/strong&gt;와 비교했을 때 둘다 변경이 되었으니 개발자가 변경해달라고 요청하는 것이다.&lt;br /&gt;
+&lt;strong&gt;branch&lt;/strong&gt;를 보면 &lt;strong&gt;master|MERGING&lt;/strong&gt; 로 되어있어, 합성중인 상태라는 것을 알 수 있다.&lt;br /&gt;
+만약 합성을 취소하고 싶다면 &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge --abort&lt;/code&gt;명령어를 사용하면 합성 전으로 돌아갈 수 있다.&lt;br /&gt;
+충돌 내용을 변경 후, 합성을 다시 진행하고 싶다면 &lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt;을 하면 새로운 &lt;code class=&quot;highlighter-rouge&quot;&gt;commit ID&lt;/code&gt;를 만들어 완성본을 보여준다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;master|MERGING&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-am&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;working merge&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;master dfdca9c] working merge
+
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log &lt;span class=&quot;nt&quot;&gt;--oneline&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--graph&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;   dfdca9c &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;HEAD -&amp;gt; master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; working merge
+|&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+| &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 4708c05 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;exp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; working e1
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; | ecae6e2 working &lt;span class=&quot;nt&quot;&gt;-m1&lt;/span&gt;
+|/
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; aec874d working 1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt;를 찍어서 보면 제대로 합성되었음을 확인 할 수 있다.&lt;/p&gt;
+
+&lt;h2&gt;GitHub&lt;/h2&gt;
+&lt;p&gt;지금까지 내용들은 모두 local에서 이뤄진 것!&lt;br /&gt;
+혹여나 노트북이 말썽을 일으켜 포맷을 해야된다면 지금까지 작업했던 것이 다 날아가게 된다.&lt;br /&gt;
+그래서 우리는 &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt; 같은 원격 저장소를 이용해 백업을 해야한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/heumheum2/login_github.png&quot; alt=&quot;텍스트&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Github를 가입하고 setting을&lt;/p&gt;</content>
 
       
       
@@ -64,7 +184,7 @@
       
 
       
-        <summary type="html">이번 세미나는 git merge, git remote add, git push, git pull 명령어와 협업이 중심 내용이였다. $ git merge git merge는 작업하고 있는 branch들을 합치고 싶을 때 사용하는 명령어다.</summary>
+        <summary type="html">이번 세미나는 git merge, git remote add, git push, git pull 명령어와 협업이 중심 내용이였다. $ git merge git merge는 작업하고 있는 branch 들을 합치고 싶을 때 사용하는 명령어다. 먼저 master에는 m_work.txt 파일을 exp에는 e_work.txt 파일을 만들어 서로 다르게 해주었다. # master files work.txt m_work.txt # exp work.txt e_work.txt # log $ git log --oneline --all --graph * 63d2d07 (exp) working e2 * 682767a working e1 | * 3dd3a20 (HEAD -&amp;gt; master) working m2 | * 5836424 working m1 |/ * 5bd3f73 working 3 * b023f81 working 2 * 247a290 working 1 --oneline 옵션은 한 줄로 보겠다는 옵션이고, -all은 모든 branch 및 tag의 기록을, --graph는 그래프로 보여주는 옵션이다. git log를 보면 commit ID 5bd3f73 이후로 서로 다른 길을 가고 있음을 보여준다. 이 둘을 한번 합쳐보겠다. (master) # 현재 HEAD가 위치한 곳은 master이다. $ git merge exp Merge made by the 'recursive' strategy. e_work.txt | 2 ++ 1 file changed, 2 insertions(+) create mode 100644 e_work.txt $ git log --oneline --all --graph * 81b2063 (HEAD -&amp;gt; master) Merge branch 'exp' |\ | * 63d2d07 (exp) working e2 | * 682767a working e1 * | 3dd3a20 working m2 * | 5836424 working m1 |/ * 5bd3f73 working 3 * b023f81 working 2 * 247a290 working 1 git merge를 사용하고 create mode 100644 e_work.txt 부분을 보면, e_work.txt가 master에 새로 생겼음을 알 수 있다. 이로써 다른 파일은 순조롭게 합쳐지는 것을 알 수 있었다. 만약 같은 파일에서 branch들을 합치고 싶을 때는 어떻게 적용되는지 해보자. (parent) (master) (exp) 0 0 0 0 0 0 0 m1 0 0 0 0 0 0 e1 0 0 0 0 m1 0 0 0 e1 0 0 0 0 m1 e1 우선 work.txt 파일을 만들고, master와 exp를 파일을 변경해 git commit해보았다. 합치기 전에 HEAD가 누구를 가르키고 있는지에 따라서 git merge &amp;lt;branch name&amp;gt;의 branch name을 신경써줘야한다. master 에서 exp를 합쳐보자. $ git merge exp Auto-merging work.txt # 자동으로 합쳐준다. CONFLICT (content): Merge conflict in work.txt Automatic merge failed; fix conflicts and then commit the result. conflict이 났다고 알려준다. 왜 그런지 살펴보자. (master|MERGING) 0 0 m1 0 0 e1 0 m1 0 e1 0 &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD m1 ======= e1 &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; exp 다른 것들은 자동으로 합쳐줬지만 마지막 행은 parent와 비교했을 때 둘다 변경이 되었으니 개발자가 변경해달라고 요청하는 것이다. branch를 보면 master|MERGING 로 되어있어, 합성중인 상태라는 것을 알 수 있다. 만약 합성을 취소하고 싶다면 git merge --abort명령어를 사용하면 합성 전으로 돌아갈 수 있다. 충돌 내용을 변경 후, 합성을 다시 진행하고 싶다면 git commit을 하면 새로운 commit ID를 만들어 완성본을 보여준다. (master|MERGING) $ git commit -am &quot;working merge&quot; [master dfdca9c] working merge (master) $ git log --oneline --all --graph * dfdca9c (HEAD -&amp;gt; master) working merge |\ | * 4708c05 (exp) working e1 * | ecae6e2 working -m1 |/ * aec874d working 1 git log를 찍어서 보면 제대로 합성되었음을 확인 할 수 있다. GitHub 지금까지 내용들은 모두 local에서 이뤄진 것! 혹여나 노트북이 말썽을 일으켜 포맷을 해야된다면 지금까지 작업했던 것이 다 날아가게 된다. 그래서 우리는 GitHub 같은 원격 저장소를 이용해 백업을 해야한다. Github를 가입하고 setting을</summary>
       
 
       
@@ -88,129 +208,129 @@
 &lt;h3&gt;$ git log&lt;/h3&gt;
 &lt;p&gt;1일차에서 배운 &lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt;는 기록 된 메시지들을 볼 수 있는 명령어였다.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b5db033fac67ab86f6f166c3ad6e101411cd906&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HEAD&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HeumHeum2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jwh6295&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@gmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;no&quot;&gt;Wed&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Dec&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;47&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2019&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0900&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log
+commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;HEAD -&amp;gt; master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt;
+Date:   Wed Dec 11 15:23:47 2019 +0900
 
-    &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+    working 5
 
-&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;103&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e78de24c45cd227f489bc255c831e6cdb09e0&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HeumHeum2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jwh6295&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@gmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;no&quot;&gt;Wed&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Dec&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2019&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0900&lt;/span&gt;
+commit 103e78de24c45cd227f489bc255c831e6cdb09e0
+Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt;
+Date:   Wed Dec 11 15:23:31 2019 +0900
 
-    &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+    working 4&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt;를 실행시키게 되면 맨 처음 &lt;strong&gt;HEAD&lt;/strong&gt;를 본다고 한다. &lt;strong&gt;HEAD -&amp;gt; master&lt;/strong&gt; 이 형태를 볼 수 있는데, &lt;strong&gt;HEAD&lt;/strong&gt;가 &lt;strong&gt;master&lt;/strong&gt;를 가르키고 있구나 정도만 이해하면 될 것 같다.&lt;/p&gt;
 
-&lt;p&gt;commit ID는 commit 옆에 있는&lt;code class=&quot;highlighter-rouge&quot;&gt;1b5db033fac67ab86f6f166c3ad6e101411cd906&lt;/code&gt; 부분으로 Author email, files, commit message, parent, Date 값 들을 &lt;strong&gt;Hash&lt;/strong&gt;로 암호화(Encryption) 한 것이다. 따라서 복호화(Decryption)를 하게 되면 parent의 commit ID도 가져올 수 있어 위의 &lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt;처럼 순서대로 기록이 찍힌다. 다만 parent가 더 이상 없을 경우 실행을 멈춘다.&lt;/p&gt;
+&lt;p&gt;commit ID는 commit 옆에 있는&lt;code class=&quot;highlighter-rouge&quot;&gt;1b5db033fac67ab86f6f166c3ad6e101411cd906&lt;/code&gt; 부분으로 Author email, files, commit message, parent, Date 값 들을 &lt;strong&gt;Hash&lt;/strong&gt;로 암호화(Encryption) 한 것이다.&lt;/p&gt;
 
 &lt;h3&gt;$ git reset&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git reset&lt;/code&gt;은 삭제와 복구를 할 수 있는 명령어라고 한다.
 해당 명령어 사용 방법은 &lt;code class=&quot;highlighter-rouge&quot;&gt;git reset &amp;lt;commit id&amp;gt;&lt;/code&gt;로 현재 기록하고 있었던 파일들이 동작을 이상하게 하거나 삭제해야 할 경우, 이전 기록의 commit ID로 복구가 되고 이 후에 기록했던 파일들은 삭제가 된다.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reset&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;103&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e78de24c45cd227f489bc255c831e6cdb09e0&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Unstaged&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;changes&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;after&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;reset:
-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;M&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;txt&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;M&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;work3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;txt&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# 파일 내용들이 변경되었음을 확인할 수 있음&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git reset 103e78de24c45cd227f489bc255c831e6cdb09e0
+Unstaged changes after reset:
+M       work.txt
+M       work3.txt           &lt;span class=&quot;c&quot;&gt;# 파일 내용들이 변경되었음을 확인할 수 있음&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;103&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e78de24c45cd227f489bc255c831e6cdb09e0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HEAD&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HeumHeum2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jwh6295&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@gmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;no&quot;&gt;Wed&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Dec&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2019&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0900&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log
+commit 103e78de24c45cd227f489bc255c831e6cdb09e0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;HEAD -&amp;gt; master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt;
+Date:   Wed Dec 11 15:23:31 2019 +0900
 
-    &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+    working 4&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;여기서 &lt;strong&gt;master&lt;/strong&gt;가 &lt;strong&gt;1b5db…&lt;/strong&gt; 에서 &lt;strong&gt;103e7…&lt;/strong&gt;로 commit ID가 변경되었음을 알 수 있었다. 그런데 &lt;strong&gt;1b5db…&lt;/strong&gt;은 진짜로 삭제되었을까?? 다시 &lt;code class=&quot;highlighter-rouge&quot;&gt;git reset&lt;/code&gt;을 사용해서 확인해보자.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reset&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b5db033fac67ab86f6f166c3ad6e101411cd906&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Unstaged&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;changes&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;after&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;reset:
-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;M&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;txt&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git reset 1b5db033fac67ab86f6f166c3ad6e101411cd906
+Unstaged changes after reset:
+M       work.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;work.txt가 변경되었음을 알려준다. &lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt;를 찍어서 확인해보면&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b5db033fac67ab86f6f166c3ad6e101411cd906&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HEAD&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HeumHeum2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jwh6295&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@gmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;no&quot;&gt;Wed&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Dec&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;47&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2019&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0900&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log
+commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;HEAD -&amp;gt; master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt;
+Date:   Wed Dec 11 15:23:47 2019 +0900
 
-    &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+    working 5
 
-&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;103&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e78de24c45cd227f489bc255c831e6cdb09e0&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HeumHeum2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jwh6295&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@gmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;no&quot;&gt;Wed&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Dec&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2019&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0900&lt;/span&gt;
+commit 103e78de24c45cd227f489bc255c831e6cdb09e0
+Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt;
+Date:   Wed Dec 11 15:23:31 2019 +0900
 
-    &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+    working 4&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;다시 복원이 되었다. 즉, &lt;strong&gt;Git 불변성&lt;/strong&gt;을 확인 할 수 있었다. 만약 &lt;code class=&quot;highlighter-rouge&quot;&gt;git reset&lt;/code&gt;으로 이전 버전으로 복구한 후 &lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -m&lt;/code&gt;을 했을 때 어떻게 되는지는 각자 해보면 좋을 것 같다.&lt;/p&gt;
 
 &lt;h3&gt;$ git checkout&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout&lt;/code&gt;은 시간여행을 해주는 명령어라고 설명해주셨다. 명령어 사용법은 &lt;code class=&quot;highlighter-rouge&quot;&gt;git reset&lt;/code&gt;과 동일하다.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;checkout&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;103&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e78d&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Note&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;switching&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'103e78d'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 103e78d라는 commend ID로 변경되었다는 것을 알 수 있다.&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout 103e78d
+Note: switching to &lt;span class=&quot;s1&quot;&gt;'103e78d'&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 103e78d라는 commend ID로 변경되었다는 것을 알 수 있다.&lt;/span&gt;
 
-&lt;span class=&quot;no&quot;&gt;You&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;are&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'detached HEAD'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;You&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;look&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;around&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;experimental&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;changes&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;them&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;discard&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commits&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;without&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;impacting&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;any&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branches&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;switching&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;back&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+You are &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'detached HEAD'&lt;/span&gt; state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;this
+state without impacting any branches by switching back to a branch.
 
-&lt;span class=&quot;no&quot;&gt;If&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;want&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retain&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commits&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;you&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;may&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;so&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;later&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+If you want to create a new branch to retain commits you create, you may
+&lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;so &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;now or later&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; by using &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; with the switch command. Example:
 
-  &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  git switch &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &amp;lt;new-branch-name&amp;gt;
 
-&lt;span class=&quot;no&quot;&gt;Or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;undo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;with:
+Or undo this operation with:
 
-  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;
+  git switch -
 
-&lt;span class=&quot;no&quot;&gt;Turn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;off&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advice&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setting&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;advice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;detachedHead&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+Turn off this advice by setting config variable advice.detachedHead to &lt;span class=&quot;nb&quot;&gt;false
 
-&lt;span class=&quot;no&quot;&gt;HEAD&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;103&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e78d&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# commend ID로 인해 파일들이 변경되었음을 알려줌.&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;M&lt;/span&gt;       &lt;span class=&quot;n&quot;&gt;work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;txt&lt;/span&gt;
+&lt;/span&gt;HEAD is now at 103e78d working 4  &lt;span class=&quot;c&quot;&gt;# commend ID로 인해 파일들이 변경되었음을 알려줌.&lt;/span&gt;
+M       work.txt
 
-&lt;span class=&quot;c1&quot;&gt;# git log를 찍어 기록 확인해보자.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# git log를 찍어 기록 확인해보자.&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;103&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e78de24c45cd227f489bc255c831e6cdb09e0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HEAD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HeumHeum2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jwh6295&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@gmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;no&quot;&gt;Wed&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Dec&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2019&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0900&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log
+commit 103e78de24c45cd227f489bc255c831e6cdb09e0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;HEAD&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt;
+Date:   Wed Dec 11 15:23:31 2019 +0900
 
-    &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+    working 4&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout&lt;/code&gt;을 했더니 &lt;strong&gt;HEAD -&amp;gt; master&lt;/strong&gt;가 &lt;strong&gt;HEAD&lt;/strong&gt;로 변경 되어있음을 볼 수 있다. 그렇다면 &lt;strong&gt;master&lt;/strong&gt;는 어디에 있을까? &lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;--all&lt;/code&gt; 옵션을 붙여서 찾아보자.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b5db033fac67ab86f6f166c3ad6e101411cd906&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HeumHeum2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jwh6295&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@gmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;no&quot;&gt;Wed&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Dec&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;47&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2019&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0900&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
+commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt;
+Date:   Wed Dec 11 15:23:47 2019 +0900
 
-    &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+    working 5
 
-&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;103&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e78de24c45cd227f489bc255c831e6cdb09e0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HEAD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HeumHeum2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jwh6295&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@gmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;no&quot;&gt;Wed&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Dec&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2019&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0900&lt;/span&gt;
+commit 103e78de24c45cd227f489bc255c831e6cdb09e0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;HEAD&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt;
+Date:   Wed Dec 11 15:23:31 2019 +0900
 
-    &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+    working 4&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;strong&gt;master&lt;/strong&gt;를 보면 최근에 기록한 곳의 commit ID를 가지고 있다고 한다. 여기에서 &lt;strong&gt;master&lt;/strong&gt;는 최근 &lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt;한 commit ID를 가진다는 것, &lt;strong&gt;HEAD&lt;/strong&gt;는 현재 작업하고 있는 위치를 알려준다는 것을 알 수 있었다. 현재 진행중인 작업을 최근에 작업한 곳으로 이동하고 싶다면 &lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout master&lt;/code&gt;를 사용하면 된다. 만약 &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;가 아닌 commend ID로 입력하게 되면 어떻게 되는지는 직접 해보면 좋을 것 같다.&lt;/p&gt;
 
 &lt;h3&gt;$ git branch&lt;/h3&gt;
 &lt;p&gt;마지막으로 &lt;strong&gt;master&lt;/strong&gt;는 &lt;strong&gt;branch&lt;/strong&gt;라고 불려진다. &lt;strong&gt;분기&lt;/strong&gt;라는 뜻으로 게임에서 어느정도 캐릭터를 육성하다가 직업을 선택하는 순간이 온다. 그 순간을 &lt;strong&gt;분기&lt;/strong&gt;라고 하는데, 프로젝트를 만들 때에도 &lt;strong&gt;분기&lt;/strong&gt;가 찾아온다. &lt;code class=&quot;highlighter-rouge&quot;&gt;git branch&lt;/code&gt;을 사용하면 프로젝트를 하나 더 복사하지 않아도 되는 장점이 생긴다. 명령어 사용 방법은 &lt;code class=&quot;highlighter-rouge&quot;&gt;git branch  &amp;lt;branch name&amp;gt;&lt;/code&gt;이다.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;branch&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git branch exp
 
-&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b5db033fac67ab86f6f166c3ad6e101411cd906&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HEAD&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HeumHeum2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jwh6295&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@gmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;no&quot;&gt;Wed&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Dec&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;47&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2019&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0900&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log
+commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;HEAD -&amp;gt; master, exp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt;
+Date:   Wed Dec 11 15:23:47 2019 +0900
 
-    &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+    working 5
 
-&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;103&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e78de24c45cd227f489bc255c831e6cdb09e0&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HeumHeum2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jwh6295&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@gmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;no&quot;&gt;Wed&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Dec&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2019&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0900&lt;/span&gt;
+commit 103e78de24c45cd227f489bc255c831e6cdb09e0
+Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt;
+Date:   Wed Dec 11 15:23:31 2019 +0900
 
-    &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+    working 4&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;branch로 master, exp가 있는 것을 볼 수 있다.&lt;/p&gt;
 
@@ -242,7 +362,7 @@
       
 
       
-        <summary type="html">이번 세미나의 중심 내용은 git reset, git checkout 명령어와 HEAD, master 였다. $ git log 1일차에서 배운 git log는 기록 된 메시지들을 볼 수 있는 명령어였다. git log commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 (HEAD -&amp;gt; master) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:47 2019 +0900 working 5 commit 103e78de24c45cd227f489bc255c831e6cdb09e0 Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:31 2019 +0900 working 4 git log를 실행시키게 되면 맨 처음 HEAD를 본다고 한다. HEAD -&amp;gt; master 이 형태를 볼 수 있는데, HEAD가 master를 가르키고 있구나 정도만 이해하면 될 것 같다. commit ID는 commit 옆에 있는1b5db033fac67ab86f6f166c3ad6e101411cd906 부분으로 Author email, files, commit message, parent, Date 값 들을 Hash로 암호화(Encryption) 한 것이다. 따라서 복호화(Decryption)를 하게 되면 parent의 commit ID도 가져올 수 있어 위의 git log처럼 순서대로 기록이 찍힌다. 다만 parent가 더 이상 없을 경우 실행을 멈춘다. $ git reset git reset은 삭제와 복구를 할 수 있는 명령어라고 한다. 해당 명령어 사용 방법은 git reset &amp;lt;commit id&amp;gt;로 현재 기록하고 있었던 파일들이 동작을 이상하게 하거나 삭제해야 할 경우, 이전 기록의 commit ID로 복구가 되고 이 후에 기록했던 파일들은 삭제가 된다. git reset 103e78de24c45cd227f489bc255c831e6cdb09e0 Unstaged changes after reset: M work.txt M work3.txt # 파일 내용들이 변경되었음을 확인할 수 있음 git log commit 103e78de24c45cd227f489bc255c831e6cdb09e0 (HEAD -&amp;gt; master) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:31 2019 +0900 working 4 여기서 master가 1b5db… 에서 103e7…로 commit ID가 변경되었음을 알 수 있었다. 그런데 1b5db…은 진짜로 삭제되었을까?? 다시 git reset을 사용해서 확인해보자. git reset 1b5db033fac67ab86f6f166c3ad6e101411cd906 Unstaged changes after reset: M work.txt work.txt가 변경되었음을 알려준다. git log를 찍어서 확인해보면 git log commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 (HEAD -&amp;gt; master) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:47 2019 +0900 working 5 commit 103e78de24c45cd227f489bc255c831e6cdb09e0 Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:31 2019 +0900 working 4 다시 복원이 되었다. 즉, Git 불변성을 확인 할 수 있었다. 만약 git reset으로 이전 버전으로 복구한 후 git commit -m을 했을 때 어떻게 되는지는 각자 해보면 좋을 것 같다. $ git checkout git checkout은 시간여행을 해주는 명령어라고 설명해주셨다. 명령어 사용법은 git reset과 동일하다. git checkout 103e78d Note: switching to '103e78d'. # 103e78d라는 commend ID로 변경되었다는 것을 알 수 있다. You are in 'detached HEAD' state. You can look around, make experimental changes and commit them, and you can discard any commits you make in this state without impacting any branches by switching back to a branch. If you want to create a new branch to retain commits you create, you may do so (now or later) by using -c with the switch command. Example: git switch -c &amp;lt;new-branch-name&amp;gt; Or undo this operation with: git switch - Turn off this advice by setting config variable advice.detachedHead to false HEAD is now at 103e78d working 4 # commend ID로 인해 파일들이 변경되었음을 알려줌. M work.txt # git log를 찍어 기록 확인해보자. git log commit 103e78de24c45cd227f489bc255c831e6cdb09e0 (HEAD) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:31 2019 +0900 working 4 git checkout을 했더니 HEAD -&amp;gt; master가 HEAD로 변경 되어있음을 볼 수 있다. 그렇다면 master는 어디에 있을까? git log에 --all 옵션을 붙여서 찾아보자. git log --all commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 (master) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:47 2019 +0900 working 5 commit 103e78de24c45cd227f489bc255c831e6cdb09e0 (HEAD) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:31 2019 +0900 working 4 master를 보면 최근에 기록한 곳의 commit ID를 가지고 있다고 한다. 여기에서 master는 최근 git commit한 commit ID를 가진다는 것, HEAD는 현재 작업하고 있는 위치를 알려준다는 것을 알 수 있었다. 현재 진행중인 작업을 최근에 작업한 곳으로 이동하고 싶다면 git checkout master를 사용하면 된다. 만약 master가 아닌 commend ID로 입력하게 되면 어떻게 되는지는 직접 해보면 좋을 것 같다. $ git branch 마지막으로 master는 branch라고 불려진다. 분기라는 뜻으로 게임에서 어느정도 캐릭터를 육성하다가 직업을 선택하는 순간이 온다. 그 순간을 분기라고 하는데, 프로젝트를 만들 때에도 분기가 찾아온다. git branch을 사용하면 프로젝트를 하나 더 복사하지 않아도 되는 장점이 생긴다. 명령어 사용 방법은 git branch &amp;lt;branch name&amp;gt;이다. git branch exp git log commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 (HEAD -&amp;gt; master, exp) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:47 2019 +0900 working 5 commit 103e78de24c45cd227f489bc255c831e6cdb09e0 Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:31 2019 +0900 working 4 branch로 master, exp가 있는 것을 볼 수 있다. 마치며 내일은 branch가 여러 개 있고, 작업하고 있는 branch가 성공했을 경우 branch를 합치고 싶을 때 사용하는 명령어를 배운다고 한다. HEAD와 master가 무엇인지 알게되었고, Git은 변하지 않고 언제나 기록하고 있으니 두려움 없이 git chechout 과 git reset을 많이 써봐야겠다. 벌써 Git이 친구 같다.</summary>
+        <summary type="html">이번 세미나의 중심 내용은 git reset, git checkout 명령어와 HEAD, master 였다. $ git log 1일차에서 배운 git log는 기록 된 메시지들을 볼 수 있는 명령어였다. $ git log commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 (HEAD -&amp;gt; master) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:47 2019 +0900 working 5 commit 103e78de24c45cd227f489bc255c831e6cdb09e0 Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:31 2019 +0900 working 4 git log를 실행시키게 되면 맨 처음 HEAD를 본다고 한다. HEAD -&amp;gt; master 이 형태를 볼 수 있는데, HEAD가 master를 가르키고 있구나 정도만 이해하면 될 것 같다. commit ID는 commit 옆에 있는1b5db033fac67ab86f6f166c3ad6e101411cd906 부분으로 Author email, files, commit message, parent, Date 값 들을 Hash로 암호화(Encryption) 한 것이다. $ git reset git reset은 삭제와 복구를 할 수 있는 명령어라고 한다. 해당 명령어 사용 방법은 git reset &amp;lt;commit id&amp;gt;로 현재 기록하고 있었던 파일들이 동작을 이상하게 하거나 삭제해야 할 경우, 이전 기록의 commit ID로 복구가 되고 이 후에 기록했던 파일들은 삭제가 된다. $ git reset 103e78de24c45cd227f489bc255c831e6cdb09e0 Unstaged changes after reset: M work.txt M work3.txt # 파일 내용들이 변경되었음을 확인할 수 있음 $ git log commit 103e78de24c45cd227f489bc255c831e6cdb09e0 (HEAD -&amp;gt; master) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:31 2019 +0900 working 4 여기서 master가 1b5db… 에서 103e7…로 commit ID가 변경되었음을 알 수 있었다. 그런데 1b5db…은 진짜로 삭제되었을까?? 다시 git reset을 사용해서 확인해보자. $ git reset 1b5db033fac67ab86f6f166c3ad6e101411cd906 Unstaged changes after reset: M work.txt work.txt가 변경되었음을 알려준다. git log를 찍어서 확인해보면 $ git log commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 (HEAD -&amp;gt; master) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:47 2019 +0900 working 5 commit 103e78de24c45cd227f489bc255c831e6cdb09e0 Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:31 2019 +0900 working 4 다시 복원이 되었다. 즉, Git 불변성을 확인 할 수 있었다. 만약 git reset으로 이전 버전으로 복구한 후 git commit -m을 했을 때 어떻게 되는지는 각자 해보면 좋을 것 같다. $ git checkout git checkout은 시간여행을 해주는 명령어라고 설명해주셨다. 명령어 사용법은 git reset과 동일하다. $ git checkout 103e78d Note: switching to '103e78d'. # 103e78d라는 commend ID로 변경되었다는 것을 알 수 있다. You are in 'detached HEAD' state. You can look around, make experimental changes and commit them, and you can discard any commits you make in this state without impacting any branches by switching back to a branch. If you want to create a new branch to retain commits you create, you may do so (now or later) by using -c with the switch command. Example: git switch -c &amp;lt;new-branch-name&amp;gt; Or undo this operation with: git switch - Turn off this advice by setting config variable advice.detachedHead to false HEAD is now at 103e78d working 4 # commend ID로 인해 파일들이 변경되었음을 알려줌. M work.txt # git log를 찍어 기록 확인해보자. $ git log commit 103e78de24c45cd227f489bc255c831e6cdb09e0 (HEAD) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:31 2019 +0900 working 4 git checkout을 했더니 HEAD -&amp;gt; master가 HEAD로 변경 되어있음을 볼 수 있다. 그렇다면 master는 어디에 있을까? git log에 --all 옵션을 붙여서 찾아보자. $ git log --all commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 (master) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:47 2019 +0900 working 5 commit 103e78de24c45cd227f489bc255c831e6cdb09e0 (HEAD) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:31 2019 +0900 working 4 master를 보면 최근에 기록한 곳의 commit ID를 가지고 있다고 한다. 여기에서 master는 최근 git commit한 commit ID를 가진다는 것, HEAD는 현재 작업하고 있는 위치를 알려준다는 것을 알 수 있었다. 현재 진행중인 작업을 최근에 작업한 곳으로 이동하고 싶다면 git checkout master를 사용하면 된다. 만약 master가 아닌 commend ID로 입력하게 되면 어떻게 되는지는 직접 해보면 좋을 것 같다. $ git branch 마지막으로 master는 branch라고 불려진다. 분기라는 뜻으로 게임에서 어느정도 캐릭터를 육성하다가 직업을 선택하는 순간이 온다. 그 순간을 분기라고 하는데, 프로젝트를 만들 때에도 분기가 찾아온다. git branch을 사용하면 프로젝트를 하나 더 복사하지 않아도 되는 장점이 생긴다. 명령어 사용 방법은 git branch &amp;lt;branch name&amp;gt;이다. $ git branch exp $ git log commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 (HEAD -&amp;gt; master, exp) Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:47 2019 +0900 working 5 commit 103e78de24c45cd227f489bc255c831e6cdb09e0 Author: HeumHeum2 &amp;lt;jwh6295@gmail.com&amp;gt; Date: Wed Dec 11 15:23:31 2019 +0900 working 4 branch로 master, exp가 있는 것을 볼 수 있다. 마치며 내일은 branch가 여러 개 있고, 작업하고 있는 branch가 성공했을 경우 branch를 합치고 싶을 때 사용하는 명령어를 배운다고 한다. HEAD와 master가 무엇인지 알게되었고, Git은 변하지 않고 언제나 기록하고 있으니 두려움 없이 git chechout 과 git reset을 많이 써봐야겠다. 벌써 Git이 친구 같다.</summary>
       
 
       
@@ -267,7 +387,8 @@ Facebook 생활코딩 커뮤니티를 살펴보는 중 &lt;a href=&quot;https://
 
 &lt;p&gt;세미나 내용은 Git을 처음 만든 개발자, 배경, 구조, 흐름 순으로 진행되었다.&lt;/p&gt;
 
-&lt;p&gt;Git을 처음 만든 사람은 Linux를 만든 &lt;a href=&quot;https://ko.wikipedia.org/wiki/%EB%A6%AC%EB%88%84%EC%8A%A4_%ED%86%A0%EB%A5%B4%EB%B0%9C%EC%8A%A4&quot;&gt;리누스 토르발스&lt;/a&gt;라고 한다.(개인적으로 생각했을 때 Linux도 만들고 Git도 만든 이 사람은 천재가 아닐까 싶다..)&lt;/p&gt;
+&lt;p&gt;Git을 처음 만든 사람은 Linux를 만든 &lt;a href=&quot;https://ko.wikipedia.org/wiki/%EB%A6%AC%EB%88%84%EC%8A%A4_%ED%86%A0%EB%A5%B4%EB%B0%9C%EC%8A%A4&quot;&gt;리누스 토르발스&lt;/a&gt;라고 한다.&lt;br /&gt;
+&lt;del&gt;Linux도 만들고 Git도 만든 이 사람은 천재가 아닐까 싶다..&lt;/del&gt;&lt;/p&gt;
 
 &lt;p&gt;Git이 처음 나온 배경은 버전을 만들 때마다, 버전의 이름들이 너무 지저분해지고, 또한 이전 버전의 자료들이 필요 할 경우 용량이 어마어마하게 커졌었다. 이러한 불편함을 해결하고자 Git이 나왔다고 한다.&lt;/p&gt;
 
@@ -279,11 +400,11 @@ Facebook 생활코딩 커뮤니티를 살펴보는 중 &lt;a href=&quot;https://
 
 &lt;h3&gt;Git 명령어&lt;/h3&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 작업 할 폴더에 .git 폴더 생성&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Git 상황 확인&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 가상환경에 담기&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Git에 기록하기&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 기록 확인&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git init &lt;span class=&quot;c&quot;&gt;# 작업 할 폴더에 .git 폴더 생성&lt;/span&gt;
+git status &lt;span class=&quot;c&quot;&gt;# Git 상황 확인&lt;/span&gt;
+git add &amp;lt;filename&amp;gt; &lt;span class=&quot;c&quot;&gt;# 가상환경에 담기&lt;/span&gt;
+git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &amp;lt;commit message&amp;gt; &lt;span class=&quot;c&quot;&gt;# Git에 기록하기&lt;/span&gt;
+git log &lt;span class=&quot;c&quot;&gt;# 기록 확인&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Git을 기록하기 위해서 가장 먼저 해야되는 것은 상태를 확인하는 것!! &lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt;로 &lt;strong&gt;Working Directory&lt;/strong&gt; 파일들의 생성, 수정, 삭제를 확인 할 수 있다.&lt;/p&gt;
 
@@ -326,7 +447,7 @@ Facebook 생활코딩 커뮤니티를 살펴보는 중 &lt;a href=&quot;https://
       
 
       
-        <summary type="html">Git을 사용해 본 경험은 로컬 저장소에 진행하고 있는 프로젝트를 저장시키고, push 라는 명령어를 사용해 GitHub에 올리는게 전부였다. Facebook 생활코딩 커뮤니티를 살펴보는 중 KISA 핀테크 기술지원센터에서 Git에 대한 세미나가 열린다는 글을 보았다. 가격은 무료 였기에 이 기회에 Git에 대해 배우고자 참석했다. 세미나 내용은 Git을 처음 만든 개발자, 배경, 구조, 흐름 순으로 진행되었다. Git을 처음 만든 사람은 Linux를 만든 리누스 토르발스라고 한다.(개인적으로 생각했을 때 Linux도 만들고 Git도 만든 이 사람은 천재가 아닐까 싶다..) Git이 처음 나온 배경은 버전을 만들 때마다, 버전의 이름들이 너무 지저분해지고, 또한 이전 버전의 자료들이 필요 할 경우 용량이 어마어마하게 커졌었다. 이러한 불편함을 해결하고자 Git이 나왔다고 한다. 구조적으론 사용자가 실제 작업을 하는 Working Directory, 실제 작업을 가상의 공간에 담는 Stage Area, Git에 작업이 기록 되어있는 Repository로 되어있다. Git으로 버전관리를 하기 위해선 먼저 작업 공간을 알려줘야 한다. Working Directory에서 git init을 사용해 .git 디렉토리를 생성하면, Git은 ‘아 여기서 작업을 하는구나’ 라고 인식하게 된다. 디렉토리 .git이 Repository이며, 기록을 위해 Working Directory의 작업들을 복사해 Stage Area에 넣어준 다음 Stage Area 작업들을 Repository에 기록하는 순서이다. 세미나에서 git bash를 사용해 ComendLine으로 Git을 다루었다. Git 명령어 git init # 작업 할 폴더에 .git 폴더 생성 git status # Git 상황 확인 git add &amp;lt;filename&amp;gt; # 가상환경에 담기 git commit -m &amp;lt;commit message&amp;gt; # Git에 기록하기 git log # 기록 확인 Git을 기록하기 위해서 가장 먼저 해야되는 것은 상태를 확인하는 것!! git status로 Working Directory 파일들의 생성, 수정, 삭제를 확인 할 수 있다. .git에 기록 시키기 전 Stage Area에 담아야하니 git add &amp;lt;filename&amp;gt;을 사용하면 가상의 공간에 담을 수 있다.(파일 전부를 담으려면 git add .) Repository에 기록하는 명령어는 git commit -m &amp;lt;commit message&amp;gt;을 사용해 가상의 공간에 담겨있는 작업들을 기록했다. -m옵션을 사용하지 않았을 때는 다른 입력창이 나왔는데 편의성과 세미나 시간으로 인해 자세한 건 따로 검색해봐야 할 것 같았다.(참고로 commit -m을 할 때 GitHub 로그인을 시켜줬어야 했다.) 이로써 Git으로 버전을 기록하는 것은 끝이 났다. 이후 git status로 상태를 확인하면 기록 파일들이 없는 것을 볼 수 있었고, 기록된 정보들을 보기 위해 git log를 사용했다. git log에서 commit 옆에 숫자와 영어로 되어있는 Commit ID와 내가 입력한 Commit Message 그리고 HEAD-&amp;gt;master를 볼 수 있었다. 세미나에서 Commit ID가 어떻게 만들어지는지도 알려주었는데, 나의 이메일과 기록한 파일, Commit Message 그리고 Parent를 합쳐 해쉬화 하여 Commit ID를 만든다고 한다. 마치며 내일은 git reset 명령어와 git checkout 그리고, HEAD와 mater에 대해서 알려준다고 한다. 살짝 맛보기로 Git은 불변하기에 파일들을 삭제하지도 변경하지도 않는다는 말로 호기심을 자극했다.. Git이 내부적으로 어떻게 돌아가는지 처음 알게 된 세미나였다. 앞으로도 Git을 써야하는 입장으로 굉장히 도움이 되었고, 같이 개발을 공부하는 사람들에게 Git을 전파해주고 싶어졌다.</summary>
+        <summary type="html">Git을 사용해 본 경험은 로컬 저장소에 진행하고 있는 프로젝트를 저장시키고, push 라는 명령어를 사용해 GitHub에 올리는게 전부였다. Facebook 생활코딩 커뮤니티를 살펴보는 중 KISA 핀테크 기술지원센터에서 Git에 대한 세미나가 열린다는 글을 보았다. 가격은 무료 였기에 이 기회에 Git에 대해 배우고자 참석했다. 세미나 내용은 Git을 처음 만든 개발자, 배경, 구조, 흐름 순으로 진행되었다. Git을 처음 만든 사람은 Linux를 만든 리누스 토르발스라고 한다. Linux도 만들고 Git도 만든 이 사람은 천재가 아닐까 싶다.. Git이 처음 나온 배경은 버전을 만들 때마다, 버전의 이름들이 너무 지저분해지고, 또한 이전 버전의 자료들이 필요 할 경우 용량이 어마어마하게 커졌었다. 이러한 불편함을 해결하고자 Git이 나왔다고 한다. 구조적으론 사용자가 실제 작업을 하는 Working Directory, 실제 작업을 가상의 공간에 담는 Stage Area, Git에 작업이 기록 되어있는 Repository로 되어있다. Git으로 버전관리를 하기 위해선 먼저 작업 공간을 알려줘야 한다. Working Directory에서 git init을 사용해 .git 디렉토리를 생성하면, Git은 ‘아 여기서 작업을 하는구나’ 라고 인식하게 된다. 디렉토리 .git이 Repository이며, 기록을 위해 Working Directory의 작업들을 복사해 Stage Area에 넣어준 다음 Stage Area 작업들을 Repository에 기록하는 순서이다. 세미나에서 git bash를 사용해 ComendLine으로 Git을 다루었다. Git 명령어 git init # 작업 할 폴더에 .git 폴더 생성 git status # Git 상황 확인 git add &amp;lt;filename&amp;gt; # 가상환경에 담기 git commit -m &amp;lt;commit message&amp;gt; # Git에 기록하기 git log # 기록 확인 Git을 기록하기 위해서 가장 먼저 해야되는 것은 상태를 확인하는 것!! git status로 Working Directory 파일들의 생성, 수정, 삭제를 확인 할 수 있다. .git에 기록 시키기 전 Stage Area에 담아야하니 git add &amp;lt;filename&amp;gt;을 사용하면 가상의 공간에 담을 수 있다.(파일 전부를 담으려면 git add .) Repository에 기록하는 명령어는 git commit -m &amp;lt;commit message&amp;gt;을 사용해 가상의 공간에 담겨있는 작업들을 기록했다. -m옵션을 사용하지 않았을 때는 다른 입력창이 나왔는데 편의성과 세미나 시간으로 인해 자세한 건 따로 검색해봐야 할 것 같았다.(참고로 commit -m을 할 때 GitHub 로그인을 시켜줬어야 했다.) 이로써 Git으로 버전을 기록하는 것은 끝이 났다. 이후 git status로 상태를 확인하면 기록 파일들이 없는 것을 볼 수 있었고, 기록된 정보들을 보기 위해 git log를 사용했다. git log에서 commit 옆에 숫자와 영어로 되어있는 Commit ID와 내가 입력한 Commit Message 그리고 HEAD-&amp;gt;master를 볼 수 있었다. 세미나에서 Commit ID가 어떻게 만들어지는지도 알려주었는데, 나의 이메일과 기록한 파일, Commit Message 그리고 Parent를 합쳐 해쉬화 하여 Commit ID를 만든다고 한다. 마치며 내일은 git reset 명령어와 git checkout 그리고, HEAD와 mater에 대해서 알려준다고 한다. 살짝 맛보기로 Git은 불변하기에 파일들을 삭제하지도 변경하지도 않는다는 말로 호기심을 자극했다.. Git이 내부적으로 어떻게 돌아가는지 처음 알게 된 세미나였다. 앞으로도 Git을 써야하는 입장으로 굉장히 도움이 되었고, 같이 개발을 공부하는 사람들에게 Git을 전파해주고 싶어졌다.</summary>
       
 
       
