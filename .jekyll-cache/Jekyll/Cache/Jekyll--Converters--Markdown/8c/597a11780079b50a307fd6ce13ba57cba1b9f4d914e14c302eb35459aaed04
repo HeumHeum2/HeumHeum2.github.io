@@ -1,4 +1,4 @@
-I"s<p>Git을 사용해 본 경험은 로컬 저장소에 진행하고 있는 프로젝트를 저장시키고, <code class="highlighter-rouge">push</code> 라는 명령어를 사용해 GitHub에 올리는게 전부였다.
+I"�<p>Git을 사용해 본 경험은 로컬 저장소에 진행하고 있는 프로젝트를 저장시키고, <code class="highlighter-rouge">push</code> 라는 명령어를 사용해 GitHub에 올리는게 전부였다.
 Facebook 생활코딩 커뮤니티를 살펴보는 중 <a href="https://onoffmix.com/event/203172">KISA 핀테크 기술지원센터</a>에서 Git에 대한 세미나가 열린다는 글을 보았다.
 가격은 <strong>무료</strong> 였기에 이 기회에 Git에 대해 배우고자 참석했다.</p>
 
@@ -14,6 +14,8 @@ Facebook 생활코딩 커뮤니티를 살펴보는 중 <a href="https://onoffmix
 <p>Git으로 버전관리를 하기 위해선 먼저 작업 공간을 알려줘야 한다. <strong>Working Directory</strong>에서 <code class="highlighter-rouge">git init</code>을 사용해 <strong>.git</strong> 디렉토리를 생성하면, Git은 ‘아 여기서 작업을 하는구나’ 라고 인식하게 된다. 디렉토리 <strong>.git</strong>이 <strong>Repository</strong>이며, 기록을 위해 <strong>Working Directory</strong>의 작업들을 복사해 <strong>Stage Area</strong>에 넣어준 다음 <strong>Stage Area</strong> 작업들을 <strong>Repository</strong>에 기록하는 순서이다.</p>
 
 <p>세미나에서 <strong>git bash</strong>를 사용해 ComendLine으로 Git을 다루었다.</p>
+
+<hr />
 
 <h3>Git 명령어</h3>
 
@@ -35,7 +37,10 @@ git log <span class="c"># 기록 확인</span></code></pre></figure>
 
 <p>세미나에서 <strong>Commit ID</strong>가 어떻게 만들어지는지도 알려주었는데, 나의 이메일과 기록한 파일, <strong>Commit Message</strong> 그리고 <strong>Parent</strong>를 합쳐 해쉬화 하여 <strong>Commit ID</strong>를 만든다고 한다.</p>
 
+<hr />
+
 <h2>마치며</h2>
+
 <p>내일은 <code class="highlighter-rouge">git reset</code> 명령어와 <code class="highlighter-rouge">git checkout</code> 그리고, <strong>HEAD</strong>와 <strong>mater</strong>에 대해서 알려준다고 한다.
 살짝 맛보기로 Git은 불변하기에 파일들을 삭제하지도 변경하지도 않는다는 말로 호기심을 자극했다..</p>
 

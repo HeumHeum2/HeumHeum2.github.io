@@ -21,7 +21,10 @@ Git으로 버전관리를 하기 위해선 먼저 작업 공간을 알려줘야 
 
 세미나에서 **git bash**를 사용해 ComendLine으로 Git을 다루었다.
 
+---
+
 ### Git 명령어
+
 {% highlight bash %}
 git init # 작업 할 폴더에 .git 폴더 생성
 git status # Git 상황 확인
@@ -42,7 +45,10 @@ Git을 기록하기 위해서 가장 먼저 해야되는 것은 상태를 확인
 
 세미나에서 **Commit ID**가 어떻게 만들어지는지도 알려주었는데, 나의 이메일과 기록한 파일, **Commit Message** 그리고 **Parent**를 합쳐 해쉬화 하여 **Commit ID**를 만든다고 한다.
 
+---
+
 ## 마치며
+
 내일은 `git reset` 명령어와 `git checkout` 그리고, **HEAD**와 **mater**에 대해서 알려준다고 한다.
 살짝 맛보기로 Git은 불변하기에 파일들을 삭제하지도 변경하지도 않는다는 말로 호기심을 자극했다..
 
