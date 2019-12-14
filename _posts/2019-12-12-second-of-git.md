@@ -9,8 +9,8 @@ categories: git 공부
 
 ### $ git log
 1일차에서 배운 `git log`는 기록 된 메시지들을 볼 수 있는 명령어였다.
-{% highlight ruby %}
-git log
+{% highlight bash %}
+$ git log
 commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 (HEAD -> master)
 Author: HeumHeum2 <jwh6295@gmail.com>
 Date:   Wed Dec 11 15:23:47 2019 +0900
@@ -26,18 +26,18 @@ Date:   Wed Dec 11 15:23:31 2019 +0900
 
 `git log`를 실행시키게 되면 맨 처음 **HEAD**를 본다고 한다. **HEAD -> master** 이 형태를 볼 수 있는데, **HEAD**가 **master**를 가르키고 있구나 정도만 이해하면 될 것 같다.
 
-commit ID는 commit 옆에 있는`1b5db033fac67ab86f6f166c3ad6e101411cd906` 부분으로 Author email, files, commit message, parent, Date 값 들을 **Hash**로 암호화(Encryption) 한 것이다. 따라서 복호화(Decryption)를 하게 되면 parent의 commit ID도 가져올 수 있어 위의 `git log`처럼 순서대로 기록이 찍힌다. 다만 parent가 더 이상 없을 경우 실행을 멈춘다.
+commit ID는 commit 옆에 있는`1b5db033fac67ab86f6f166c3ad6e101411cd906` 부분으로 Author email, files, commit message, parent, Date 값 들을 **Hash**로 암호화(Encryption) 한 것이다.
 
 ### $ git reset
 `git reset`은 삭제와 복구를 할 수 있는 명령어라고 한다.
 해당 명령어 사용 방법은 `git reset <commit id>`로 현재 기록하고 있었던 파일들이 동작을 이상하게 하거나 삭제해야 할 경우, 이전 기록의 commit ID로 복구가 되고 이 후에 기록했던 파일들은 삭제가 된다.
-{% highlight ruby %}
-git reset 103e78de24c45cd227f489bc255c831e6cdb09e0
+{% highlight bash %}
+$ git reset 103e78de24c45cd227f489bc255c831e6cdb09e0
 Unstaged changes after reset:
 M       work.txt
 M       work3.txt           # 파일 내용들이 변경되었음을 확인할 수 있음
 
-git log
+$ git log
 commit 103e78de24c45cd227f489bc255c831e6cdb09e0 (HEAD -> master)
 Author: HeumHeum2 <jwh6295@gmail.com>
 Date:   Wed Dec 11 15:23:31 2019 +0900
@@ -46,14 +46,14 @@ Date:   Wed Dec 11 15:23:31 2019 +0900
 {% endhighlight %}
 여기서 **master**가 **1b5db...** 에서 **103e7...**로 commit ID가 변경되었음을 알 수 있었다. 그런데 **1b5db...**은 진짜로 삭제되었을까?? 다시 `git reset`을 사용해서 확인해보자.
 
-{% highlight ruby %}
-git reset 1b5db033fac67ab86f6f166c3ad6e101411cd906
+{% highlight bash %}
+$ git reset 1b5db033fac67ab86f6f166c3ad6e101411cd906
 Unstaged changes after reset:
 M       work.txt
 {% endhighlight %}
 work.txt가 변경되었음을 알려준다. `git log`를 찍어서 확인해보면
-{% highlight ruby %}
-git log
+{% highlight bash %}
+$ git log
 commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 (HEAD -> master)
 Author: HeumHeum2 <jwh6295@gmail.com>
 Date:   Wed Dec 11 15:23:47 2019 +0900
@@ -71,8 +71,8 @@ Date:   Wed Dec 11 15:23:31 2019 +0900
 ### $ git checkout
 `git checkout`은 시간여행을 해주는 명령어라고 설명해주셨다. 명령어 사용법은 `git reset`과 동일하다.
 
-{% highlight ruby %}
-git checkout 103e78d
+{% highlight bash %}
+$ git checkout 103e78d
 Note: switching to '103e78d'.  # 103e78d라는 commend ID로 변경되었다는 것을 알 수 있다.
 
 You are in 'detached HEAD' state. You can look around, make experimental
@@ -95,7 +95,7 @@ M       work.txt
 
 # git log를 찍어 기록 확인해보자.
 
-git log
+$ git log
 commit 103e78de24c45cd227f489bc255c831e6cdb09e0 (HEAD)
 Author: HeumHeum2 <jwh6295@gmail.com>
 Date:   Wed Dec 11 15:23:31 2019 +0900
@@ -104,8 +104,8 @@ Date:   Wed Dec 11 15:23:31 2019 +0900
 {% endhighlight %}
 `git checkout`을 했더니 **HEAD -> master**가 **HEAD**로 변경 되어있음을 볼 수 있다. 그렇다면 **master**는 어디에 있을까? `git log`에 `--all` 옵션을 붙여서 찾아보자.
 
-{% highlight ruby %}
-git log --all
+{% highlight bash %}
+$ git log --all
 commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 (master)
 Author: HeumHeum2 <jwh6295@gmail.com>
 Date:   Wed Dec 11 15:23:47 2019 +0900
@@ -123,10 +123,10 @@ Date:   Wed Dec 11 15:23:31 2019 +0900
 
 ### $ git branch
 마지막으로 **master**는 **branch**라고 불려진다. **분기**라는 뜻으로 게임에서 어느정도 캐릭터를 육성하다가 직업을 선택하는 순간이 온다. 그 순간을 **분기**라고 하는데, 프로젝트를 만들 때에도 **분기**가 찾아온다. `git branch`을 사용하면 프로젝트를 하나 더 복사하지 않아도 되는 장점이 생긴다. 명령어 사용 방법은 `git branch  <branch name>`이다.
-{% highlight ruby%}
-git branch exp
+{% highlight bash%}
+$ git branch exp
 
-git log
+$ git log
 commit 1b5db033fac67ab86f6f166c3ad6e101411cd906 (HEAD -> master, exp)
 Author: HeumHeum2 <jwh6295@gmail.com>
 Date:   Wed Dec 11 15:23:47 2019 +0900

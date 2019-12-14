@@ -10,7 +10,8 @@ Facebook 생활코딩 커뮤니티를 살펴보는 중 [KISA 핀테크 기술지
 
 세미나 내용은 Git을 처음 만든 개발자, 배경, 구조, 흐름 순으로 진행되었다.
 
-Git을 처음 만든 사람은 Linux를 만든 [리누스 토르발스][linus torvalds]라고 한다.(개인적으로 생각했을 때 Linux도 만들고 Git도 만든 이 사람은 천재가 아닐까 싶다..)
+Git을 처음 만든 사람은 Linux를 만든 [리누스 토르발스][linus torvalds]라고 한다.  
+~~Linux도 만들고 Git도 만든 이 사람은 천재가 아닐까 싶다..~~
 
 Git이 처음 나온 배경은 버전을 만들 때마다, 버전의 이름들이 너무 지저분해지고, 또한 이전 버전의 자료들이 필요 할 경우 용량이 어마어마하게 커졌었다. 이러한 불편함을 해결하고자 Git이 나왔다고 한다.
 
@@ -21,7 +22,7 @@ Git으로 버전관리를 하기 위해선 먼저 작업 공간을 알려줘야 
 세미나에서 **git bash**를 사용해 ComendLine으로 Git을 다루었다.
 
 ### Git 명령어
-{% highlight ruby %}
+{% highlight bash %}
 git init # 작업 할 폴더에 .git 폴더 생성
 git status # Git 상황 확인
 git add <filename> # 가상환경에 담기

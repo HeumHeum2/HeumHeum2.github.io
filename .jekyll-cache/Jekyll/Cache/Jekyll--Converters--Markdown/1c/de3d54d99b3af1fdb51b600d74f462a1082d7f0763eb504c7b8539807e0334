@@ -1,0 +1,178 @@
+I"&<p>이번 세미나는 <code class="highlighter-rouge">git merge</code>, <code class="highlighter-rouge">git remote add</code>, <code class="highlighter-rouge">git push</code>, <code class="highlighter-rouge">git pull</code> 명령어와 <strong>협업</strong>이 중심 내용이였다.</p>
+
+<h3>$ git merge</h3>
+<p><code class="highlighter-rouge">git merge</code>는 작업하고 있는 <strong>branch</strong> 들을 합치고 싶을 때 사용하는 명령어다.</p>
+
+<p>먼저 <strong>master</strong>에는 m_work.txt 파일을 <strong>exp</strong>에는 e_work.txt 파일을 만들어 서로 다르게 해주었다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># master files</span>
+work.txt
+m_work.txt
+
+<span class="c"># exp</span>
+work.txt
+e_work.txt
+
+<span class="c"># log</span>
+<span class="nv">$ </span>git log <span class="nt">--oneline</span> <span class="nt">--all</span> <span class="nt">--graph</span>
+<span class="k">*</span> 63d2d07 <span class="o">(</span>exp<span class="o">)</span> working e2
+<span class="k">*</span> 682767a working e1
+| <span class="k">*</span> 3dd3a20 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> working m2
+| <span class="k">*</span> 5836424 working m1
+|/
+<span class="k">*</span> 5bd3f73 working 3
+<span class="k">*</span> b023f81 working 2
+<span class="k">*</span> 247a290 working 1</code></pre></figure>
+
+<p><code class="highlighter-rouge">--oneline</code> 옵션은 한 줄로 보겠다는 옵션이고, <code class="highlighter-rouge">-all</code>은 모든 branch 및 tag의 기록을, <code class="highlighter-rouge">--graph</code>는 그래프로 보여주는 옵션이다.</p>
+
+<p><code class="highlighter-rouge">git log</code>를 보면 commit ID <strong>5bd3f73</strong> 이후로 서로 다른 길을 가고 있음을 보여준다. 이 둘을 한번 합쳐보겠다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">(</span>master<span class="o">)</span> <span class="c"># 현재 HEAD가 위치한 곳은 master이다.</span>
+
+<span class="nv">$ </span>git merge exp
+Merge made by the <span class="s1">'recursive'</span> strategy.
+ e_work.txt | 2 ++ 
+ 1 file changed, 2 insertions<span class="o">(</span>+<span class="o">)</span>
+ create mode 100644 e_work.txt
+
+<span class="nv">$ </span>git log <span class="nt">--oneline</span> <span class="nt">--all</span> <span class="nt">--graph</span>
+<span class="k">*</span>   81b2063 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">'exp'</span>
+|<span class="se">\</span>
+| <span class="k">*</span> 63d2d07 <span class="o">(</span>exp<span class="o">)</span> working e2
+| <span class="k">*</span> 682767a working e1
+<span class="k">*</span> | 3dd3a20 working m2
+<span class="k">*</span> | 5836424 working m1
+|/
+<span class="k">*</span> 5bd3f73 working 3
+<span class="k">*</span> b023f81 working 2
+<span class="k">*</span> 247a290 working 1</code></pre></figure>
+
+<p><code class="highlighter-rouge">git merge</code>를 사용하고 <code class="highlighter-rouge">create mode 100644 e_work.txt</code> 부분을 보면, e_work.txt가 <strong>master</strong>에 새로 생겼음을 알 수 있다. 이로써 다른 파일은 순조롭게 합쳐지는 것을 알 수 있었다.</p>
+
+<p>만약 같은 파일에서 <strong>branch</strong>들을 합치고 싶을 때는 어떻게 적용되는지 해보자.</p>
+
+<figure class="highlight"><pre><code class="language-txt" data-lang="txt">(parent)    (master)      (exp)
+0               0           0
+0               0           0
+0               m1          0
+0               0           0
+0               0           e1
+0               0           0
+0               m1          0
+0               0           e1
+0               0           0
+0               m1          e1</code></pre></figure>
+
+<p>우선 work.txt 파일을 만들고, <strong>master</strong>와 <strong>exp</strong>를 파일을 변경해 <code class="highlighter-rouge">git commit</code>해보았다.<br />
+합치기 전에 HEAD가 누구를 가르키고 있는지에 따라서 <code class="highlighter-rouge">git merge &lt;branch name&gt;</code>의 branch name을 신경써줘야한다.</p>
+
+<p><strong>master</strong> 에서 <strong>exp</strong>를 합쳐보자.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git merge exp
+Auto-merging work.txt <span class="c"># 자동으로 합쳐준다.</span>
+CONFLICT <span class="o">(</span>content<span class="o">)</span>: Merge conflict <span class="k">in </span>work.txt
+Automatic merge failed<span class="p">;</span> fix conflicts and <span class="k">then </span>commit the result.</code></pre></figure>
+
+<p><strong>conflict</strong>이 났다고 알려준다. 왜 그런지 살펴보자.</p>
+
+<figure class="highlight"><pre><code class="language-txt" data-lang="txt">(master|MERGING)
+0
+0
+m1
+0
+0
+e1
+0
+m1
+0
+e1
+0
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+m1
+=======
+e1
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; exp</code></pre></figure>
+
+<p>다른 것들은 자동으로 합쳐줬지만 마지막 행은 <strong>parent</strong>와 비교했을 때 둘다 변경이 되었으니 개발자가 변경해달라고 요청하는 것이다.<br />
+<strong>branch</strong>를 보면 <strong>master|MERGING</strong> 로 되어있어, 합성중인 상태라는 것을 알 수 있다.<br />
+만약 합성을 취소하고 싶다면 <code class="highlighter-rouge">git merge --abort</code>명령어를 사용하면 합성 전으로 돌아갈 수 있다.<br />
+충돌 내용을 변경 후, 합성을 다시 진행하고 싶다면 <code class="highlighter-rouge">git commit</code>을 하면 새로운 <code class="highlighter-rouge">commit ID</code>를 만들어 완성본을 보여준다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">(</span>master|MERGING<span class="o">)</span>
+<span class="nv">$ </span>git commit <span class="nt">-am</span> <span class="s2">"working merge"</span>
+<span class="o">[</span>master dfdca9c] working merge
+
+<span class="o">(</span>master<span class="o">)</span>
+<span class="nv">$ </span>git log <span class="nt">--oneline</span> <span class="nt">--all</span> <span class="nt">--graph</span>
+<span class="k">*</span>   dfdca9c <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> working merge
+|<span class="se">\</span>
+| <span class="k">*</span> 4708c05 <span class="o">(</span>exp<span class="o">)</span> working e1
+<span class="k">*</span> | ecae6e2 working <span class="nt">-m1</span>
+|/
+<span class="k">*</span> aec874d working 1</code></pre></figure>
+
+<p><code class="highlighter-rouge">git log</code>를 찍어서 보면 제대로 합성되었음을 확인 할 수 있다.</p>
+
+<hr />
+
+<h2>GitHub</h2>
+
+<p>지금까지 내용들은 모두 local에서 이뤄진 것!<br />
+혹여나 노트북이 말썽을 일으켜 포맷을 해야된다면 지금까지 작업했던 것이 다 날아가게 된다.<br />
+그래서 우리는 <a href="https://github.com">GitHub</a> 같은 remote storage(원격 저장소)를 이용해 백업을 해야한다.</p>
+
+<p><img src="/assets/loginGitHub.png" alt="text" /></p>
+
+<p>아직, <a href="https://github.com">GitHub</a>에 가입 하지 않았다면 회원가입을 하자.</p>
+
+<hr />
+
+<p><img src="/assets/setGitHub.png" alt="text" /></p>
+
+<p><strong>+</strong>를 누르게 되면 <strong>New repository</strong>가 보인다. 프로젝트를 올릴 때 자주 가게 될 녀석이다.</p>
+
+<hr />
+
+<p><img src="/assets/createGitHub.png" alt="text" /></p>
+
+<p><strong>Repository name</strong>에 진행중인 프로젝트 이름을 적어주고, 프로젝트의 성향에 따라 Public, Private을 설정하면 될 것 같다. README는 주로 프로젝트 설명서이다. 마크다운 형식으로 작성 할 수 있다고 하는데 아직 작성해본 적은 없다.<br />
+<strong>Repository name</strong>을 TestRepository라고 적고 생성해보았다.</p>
+
+<hr />
+
+<p><img src="/assets/testGitHub.png" alt="text" /></p>
+
+<p>이제 local storage에 remote storage 경로를 지정해주면 연결은 끝이 난다.</p>
+
+<hr />
+
+<h3>$ git remote add</h3>
+
+<p><code class="highlighter-rouge">git remote add &lt;remote name&gt;&lt;HTTPS or SSH&gt;</code> remote storage에 연결해주기 위한 명령어이다.<br />
+<code class="highlighter-rouge">&lt;remote name&gt;</code>는 remote storage의 이름을 적는데, 대부분 origin을 많이 쓴다고 한다.</p>
+
+<p><img src="/assets/HttpsOrSshGitHub.png" alt="text" /></p>
+
+<p><code class="highlighter-rouge">&lt;HTTPS or SSH&gt;</code>는 적혀져 있으니 HTTPS로 할 것인지 SSH로 할 것인지 정해주면 된다.<br />
+<code class="highlighter-rouge">git merge</code> 했던 프로젝트와 연결해보겠다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git remote add origin git@github.com:HeumHeum2/TestRepository.git</code></pre></figure>
+
+<p>연결이 되었는지 확인해보고자 프로젝트를 올려봐야 알 것 같다.</p>
+
+<hr />
+
+<h3>$ git push</h3>
+
+<p><code class="highlighter-rouge">git push &lt;remote name&gt;</code> 명령어는 프로젝트를 <strong>HEAD</strong>가 가르키고 있는 <strong>branch</strong>와 같은 이름으로 된 remote storage의 <strong>branch</strong>에 업로드 해주는 역할을 한다.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git push origin
+fatal: The current branch master has no upstream branch.
+To push the current branch and <span class="nb">set </span>the remote as upstream, use
+
+    git push <span class="nt">--set-upstream</span> origin master</code></pre></figure>
+
+<p>remote storage</p>
+
+:ET

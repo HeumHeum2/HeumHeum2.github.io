@@ -1,5 +1,0 @@
-I"�<p>이번 세미나는 <code class="highlighter-rouge">git merge</code>, <code class="highlighter-rouge">git remote add</code>, <code class="highlighter-rouge">git push</code>, <code class="highlighter-rouge">git pull</code> 명령어와 <strong>협업</strong>이 중심 내용이였다.</p>
-
-<h3>$ git merge</h3>
-<p><code class="highlighter-rouge">git merge</code>는 작업하고 있는 <strong>branch</strong>들을 합치고 싶을 때 사용하는 명령어다.</p>
-:ET
