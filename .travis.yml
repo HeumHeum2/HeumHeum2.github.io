@@ -27,7 +27,7 @@ branches:
   - master
 deploy:
   provider: pages
-  skip_cleanup: true
+  cleanup: true
   keep-history: true
   local-dir: _site
   target-branch: gh-pages
