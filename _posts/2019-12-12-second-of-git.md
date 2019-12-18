@@ -2,12 +2,10 @@
 layout: post
 title: "Git 공부 2일차"
 lang: ko
-categories: git 공부
+categories: Git 공부
 ---
 
 이번 세미나의 중심 내용은 `git reset`, `git checkout` 명령어와 **HEAD**, **master** 였다.
-
----
 
 ### $ git log
 

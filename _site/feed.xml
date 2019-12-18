@@ -5,7 +5,7 @@
   
   <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" />
-  <updated>2019-12-14T18:41:28+00:00</updated>
+  <updated>2019-12-18T12:46:05+00:00</updated>
   <id>http://localhost:4000//</id>
 
   
@@ -24,6 +24,86 @@
     </author>
   
 
+  
+  
+    <entry xml:lang="ko">
+      
+      <title type="html">Git 명령어</title>
+      
+      
+      <link href="http://localhost:4000/2019/12/18/command-git/" rel="alternate" type="text/html" title="Git 명령어" />
+      
+      <published>2019-12-18T00:00:00+00:00</published>
+      <updated>2019-12-18T00:00:00+00:00</updated>
+      <id>http://localhost:4000/2019/12/18/command-git</id>
+      <content type="html" xml:base="http://localhost:4000/2019/12/18/command-git/">&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git init
+&lt;span class=&quot;c&quot;&gt;# .git 만듦.&lt;/span&gt;
+
+git status
+&lt;span class=&quot;c&quot;&gt;# 상태 확인.&lt;/span&gt;
+
+git add &amp;lt;files name&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# working Directory에 있는 작업들을 Stage Area에 복사함.&lt;/span&gt;
+
+git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &amp;lt;message&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# Stage Area에 있는 작업들을 .git에 저장함.&lt;/span&gt;
+
+git log
+&lt;span class=&quot;c&quot;&gt;# commit 된 기록들을 보여줌.&lt;/span&gt;
+
+git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; &amp;lt;Commit ID&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# master의 내용을 입력한 Commit ID로 바뀌어 복원 및 삭제가 일어남.&lt;/span&gt;
+
+git checkout &amp;lt;Commit ID or branch&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# HEAD가 입력한 Commit ID 또는 branch로 바뀌어 현재 작업하고 있는 버전이 바뀜.&lt;/span&gt;
+
+git branch &amp;lt;branch name&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# 현재 위치한 곳에 branch를 만듬.&lt;/span&gt;
+
+git merge &amp;lt;A branch located elsewhere&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# 현재 위치한 곳에서 다른 곳에 위치한 branch와 합침.&lt;/span&gt;
+
+git remote add &amp;lt;remote name&amp;gt; &amp;lt;URL or SSH&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# 원격저장소 경로 지정.&lt;/span&gt;
+
+git push &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &amp;lt;remote name&amp;gt; &amp;lt;branch&amp;gt;
+&lt;span class=&quot;c&quot;&gt;# 원격저장소에 현재 branch로 파일들을 올림.&lt;/span&gt;
+
+git pull
+&lt;span class=&quot;c&quot;&gt;# 원격저장소에서 파일들을 가져옴.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+        <author>
+            <name>HeumHeum2</name>
+          
+          
+        </author>
+      
+
+      
+        <category term="Git" />
+      
+        <category term="공부" />
+      
+        <category term="명령어" />
+      
+
+      
+
+      
+        <summary type="html">git init # .git 만듦. git status # 상태 확인. git add &amp;lt;files name&amp;gt; # working Directory에 있는 작업들을 Stage Area에 복사함. git commit -m &amp;lt;message&amp;gt; # Stage Area에 있는 작업들을 .git에 저장함. git log # commit 된 기록들을 보여줌. git reset --hard &amp;lt;Commit ID&amp;gt; # master의 내용을 입력한 Commit ID로 바뀌어 복원 및 삭제가 일어남. git checkout &amp;lt;Commit ID or branch&amp;gt; # HEAD가 입력한 Commit ID 또는 branch로 바뀌어 현재 작업하고 있는 버전이 바뀜. git branch &amp;lt;branch name&amp;gt; # 현재 위치한 곳에 branch를 만듬. git merge &amp;lt;A branch located elsewhere&amp;gt; # 현재 위치한 곳에서 다른 곳에 위치한 branch와 합침. git remote add &amp;lt;remote name&amp;gt; &amp;lt;URL or SSH&amp;gt; # 원격저장소 경로 지정. git push -u &amp;lt;remote name&amp;gt; &amp;lt;branch&amp;gt; # 원격저장소에 현재 branch로 파일들을 올림. git pull # 원격저장소에서 파일들을 가져옴.</summary>
+      
+
+      
+      
+    </entry>
+  
   
   
     <entry xml:lang="ko">
@@ -284,7 +364,7 @@ React를 현재 공부중인데, 지식을 공유한다고 생각하고 하나 �
       
 
       
-        <category term="git" />
+        <category term="Git" />
       
         <category term="공부" />
       
@@ -312,8 +392,6 @@ React를 현재 공부중인데, 지식을 공유한다고 생각하고 하나 �
       <updated>2019-12-12T00:00:00+00:00</updated>
       <id>http://localhost:4000/2019/12/12/second-of-git</id>
       <content type="html" xml:base="http://localhost:4000/2019/12/12/second-of-git/">&lt;p&gt;이번 세미나의 중심 내용은 &lt;code class=&quot;highlighter-rouge&quot;&gt;git reset&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout&lt;/code&gt; 명령어와 &lt;strong&gt;HEAD&lt;/strong&gt;, &lt;strong&gt;master&lt;/strong&gt; 였다.&lt;/p&gt;
-
-&lt;hr /&gt;
 
 &lt;h3&gt;$ git log&lt;/h3&gt;
 
@@ -477,7 +555,7 @@ Date:   Wed Dec 11 15:23:31 2019 +0900
       
 
       
-        <category term="git" />
+        <category term="Git" />
       
         <category term="공부" />
       
@@ -567,7 +645,7 @@ git log &lt;span class=&quot;c&quot;&gt;# 기록 확인&lt;/span&gt;&lt;/code&gt
       
 
       
-        <category term="git" />
+        <category term="Git" />
       
         <category term="공부" />
       

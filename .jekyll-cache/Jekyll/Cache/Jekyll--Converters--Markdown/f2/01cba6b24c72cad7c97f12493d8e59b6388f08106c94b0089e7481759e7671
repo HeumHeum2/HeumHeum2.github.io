@@ -1,6 +1,4 @@
-I"�#<p>이번 세미나의 중심 내용은 <code class="highlighter-rouge">git reset</code>, <code class="highlighter-rouge">git checkout</code> 명령어와 <strong>HEAD</strong>, <strong>master</strong> 였다.</p>
-
-<hr />
+I"�#<p>이번 세미나의 중심 내용은 <code class="highlighter-rouge">git reset</code>, <code class="highlighter-rouge">git checkout</code> 명령어와 <strong>HEAD</strong>, <strong>master</strong> 였다.</p>
 
 <h3>$ git log</h3>
 

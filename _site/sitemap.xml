@@ -13,6 +13,10 @@
 <lastmod>2019-12-13T00:00:00+00:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/2019/12/18/command-git/</loc>
+<lastmod>2019-12-18T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
@@ -26,5 +30,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/categories/%EA%B3%B5%EB%B6%80/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/categories/%EB%AA%85%EB%A0%B9%EC%96%B4/</loc>
 </url>
 </urlset>

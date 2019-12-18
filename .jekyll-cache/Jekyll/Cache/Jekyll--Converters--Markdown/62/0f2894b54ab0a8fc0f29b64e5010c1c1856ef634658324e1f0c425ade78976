@@ -1,0 +1,5 @@
+I"$<h2>명령어</h2>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git init <span class="c"># -&gt; .git 만듬</span>
+git add &lt;filename&gt; <span class="c"># -&gt; working Directory에 있는 작업들을 Stage Area에 복사함.</span></code></pre></figure>
+:ET

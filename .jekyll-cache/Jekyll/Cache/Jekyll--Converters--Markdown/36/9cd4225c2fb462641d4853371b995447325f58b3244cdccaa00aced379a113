@@ -1,0 +1,37 @@
+I"�
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git init
+<span class="c"># .git 만듦.</span>
+
+git status
+<span class="c"># 상태 확인.</span>
+
+git add &lt;files name&gt;
+<span class="c"># working Directory에 있는 작업들을 Stage Area에 복사함.</span>
+
+git commit <span class="nt">-m</span> &lt;message&gt;
+<span class="c"># Stage Area에 있는 작업들을 .git에 저장함.</span>
+
+git log
+<span class="c"># commit 된 기록들을 보여줌.</span>
+
+git reset <span class="nt">--hard</span> &lt;Commit ID&gt;
+<span class="c"># master의 내용을 입력한 Commit ID로 바뀌어 복원 및 삭제가 일어남.</span>
+
+git checkout &lt;Commit ID or branch&gt;
+<span class="c"># HEAD가 입력한 Commit ID 또는 branch로 바뀌어 현재 작업하고 있는 버전이 바뀜.</span>
+
+git branch &lt;branch name&gt;
+<span class="c"># 현재 위치한 곳에 branch를 만듬.</span>
+
+git merge &lt;A branch located elsewhere&gt;
+<span class="c"># 현재 위치한 곳에서 다른 곳에 위치한 branch와 합침.</span>
+
+git remote add &lt;remote name&gt; &lt;URL or SSH&gt;
+<span class="c"># 원격저장소 경로 지정.</span>
+
+git push <span class="nt">-u</span> &lt;remote name&gt; &lt;branch&gt;
+<span class="c"># 원격저장소에 현재 branch로 파일들을 올림.</span>
+
+git pull
+<span class="c"># 원격저장소에서 파일들을 가져옴.</span></code></pre></figure>
+:ET
