@@ -15,6 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 title: Heum's blog
 author: HeumHeum2
+remote_theme: yous/whiteglass
 description: Let's do the **hard work like it's easy**.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://HeumHeum2.github.io" # the base hostname & protocol for your site, e.g. http://example.com
@@ -39,6 +40,12 @@ facebook_image:
 google_analytics: UA-NNNNNNNN-N
 comments: true
 disqus_shortname: Heum's blog
+
+# Plugins
+plugins:
+  - jekyll-archives
+  - jekyll-paginate
+  - jekyll-sitemap
 
 # Build settings
 markdown: kramdown
