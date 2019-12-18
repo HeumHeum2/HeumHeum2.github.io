@@ -2,7 +2,7 @@
 layout: post
 title: "Git 공부 3일차"
 lang: ko
-categories: Git 공부
+categories: Git Study
 ---
 
 이번 세미나는 `git merge`, `git remote add`, `git push`, `git pull` 명령어와 **협업**이 중심 내용이였다.

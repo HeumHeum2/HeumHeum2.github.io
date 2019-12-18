@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Git 공부 1일차"
-categories: Git 공부
+categories: Git Study
 ---
 
 Git을 사용해 본 경험은 로컬 저장소에 진행하고 있는 프로젝트를 저장시키고, `push` 라는 명령어를 사용해 GitHub에 올리는게 전부였다.

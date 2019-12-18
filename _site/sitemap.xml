@@ -29,9 +29,9 @@
 <loc>http://localhost:4000/categories/git/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/categories/%EA%B3%B5%EB%B6%80/</loc>
+<loc>http://localhost:4000/categories/study/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/categories/%EB%AA%85%EB%A0%B9%EC%96%B4/</loc>
+<loc>http://localhost:4000/categories/command/</loc>
 </url>
 </urlset>

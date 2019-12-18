@@ -5,7 +5,7 @@
   
   <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" />
-  <updated>2019-12-18T12:48:33+00:00</updated>
+  <updated>2019-12-18T13:16:58+00:00</updated>
   <id>http://localhost:4000//</id>
 
   
@@ -89,9 +89,9 @@ git pull
       
         <category term="Git" />
       
-        <category term="공부" />
+        <category term="Study" />
       
-        <category term="명령어" />
+        <category term="Command" />
       
 
       
@@ -366,7 +366,7 @@ React를 현재 공부중인데, 지식을 공유한다고 생각하고 하나 �
       
         <category term="Git" />
       
-        <category term="공부" />
+        <category term="Study" />
       
 
       
@@ -557,7 +557,7 @@ Date:   Wed Dec 11 15:23:31 2019 +0900
       
         <category term="Git" />
       
-        <category term="공부" />
+        <category term="Study" />
       
 
       
@@ -647,7 +647,7 @@ git log &lt;span class=&quot;c&quot;&gt;# 기록 확인&lt;/span&gt;&lt;/code&gt
       
         <category term="Git" />
       
-        <category term="공부" />
+        <category term="Study" />
       
 
       

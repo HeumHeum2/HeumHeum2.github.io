@@ -1,7 +1,0 @@
-I"F<h2>명령어</h2>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git init <span class="c"># .git 만듬</span>
-git add &lt;files name&gt; <span class="c"># working Directory에 있는 작업들을 Stage Area에 복사함.</span>
-git commit <span class="nt">-m</span> &lt;message&gt; <span class="c"># Stage Area에 있는 작업들을 .git에 저장함.</span>
-git reset <span class="nt">--hard</span> &lt;Commit ID&gt; <span class="c"># master의 내용을 입력한 Commit ID로 바꾸어 복원 및 삭제가 일어남</span></code></pre></figure>
-:ET

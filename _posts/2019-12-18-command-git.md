@@ -2,7 +2,7 @@
 layout: post
 title: "Git 명령어"
 lang: ko
-categories: Git 공부 명령어
+categories: Git Study Command
 ---
 
 {% highlight bash %}
