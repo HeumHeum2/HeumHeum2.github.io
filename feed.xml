@@ -3,10 +3,10 @@
   <generator uri="http://jekyllrb.com" version="4.0.0">Jekyll</generator>
   
   
-  <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
-  <link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" />
-  <updated>2019-12-18T19:14:29+00:00</updated>
-  <id>http://localhost:4000//</id>
+  <link href="https://heumheum2.github.io/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://heumheum2.github.io/" rel="alternate" type="text/html" hreflang="ko" />
+  <updated>2019-12-18T21:31:04+00:00</updated>
+  <id>https://heumheum2.github.io//</id>
 
   
     <title type="html">Heum’s blog</title>
@@ -31,12 +31,12 @@
       <title type="html">Git 명령어</title>
       
       
-      <link href="http://localhost:4000/2019/12/18/command-git/" rel="alternate" type="text/html" title="Git 명령어" />
+      <link href="https://heumheum2.github.io/2019/12/18/command-git/" rel="alternate" type="text/html" title="Git 명령어" />
       
       <published>2019-12-18T00:00:00+00:00</published>
       <updated>2019-12-18T00:00:00+00:00</updated>
-      <id>http://localhost:4000/2019/12/18/command-git</id>
-      <content type="html" xml:base="http://localhost:4000/2019/12/18/command-git/">&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git init
+      <id>https://heumheum2.github.io/2019/12/18/command-git</id>
+      <content type="html" xml:base="https://heumheum2.github.io/2019/12/18/command-git/">&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git init
 &lt;span class=&quot;c&quot;&gt;# 현재 디렉토리 위치에 .git 만듦.&lt;/span&gt;
 
 git status
@@ -111,12 +111,12 @@ git pull
       <title type="html">Git 공부 3일차</title>
       
       
-      <link href="http://localhost:4000/2019/12/13/third-of-git/" rel="alternate" type="text/html" title="Git 공부 3일차" />
+      <link href="https://heumheum2.github.io/2019/12/13/third-of-git/" rel="alternate" type="text/html" title="Git 공부 3일차" />
       
       <published>2019-12-13T00:00:00+00:00</published>
       <updated>2019-12-13T00:00:00+00:00</updated>
-      <id>http://localhost:4000/2019/12/13/third-of-git</id>
-      <content type="html" xml:base="http://localhost:4000/2019/12/13/third-of-git/">&lt;p&gt;이번 세미나는 &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote add&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt; 명령어와 &lt;strong&gt;협업&lt;/strong&gt;이 중심 내용이였다.&lt;/p&gt;
+      <id>https://heumheum2.github.io/2019/12/13/third-of-git</id>
+      <content type="html" xml:base="https://heumheum2.github.io/2019/12/13/third-of-git/">&lt;p&gt;이번 세미나는 &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote add&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git pull&lt;/code&gt; 명령어와 &lt;strong&gt;협업&lt;/strong&gt;이 중심 내용이였다.&lt;/p&gt;
 
 &lt;h3&gt;$ git merge&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git merge&lt;/code&gt;는 작업하고 있는 &lt;strong&gt;branch&lt;/strong&gt; 들을 합치고 싶을 때 사용하는 명령어다.&lt;/p&gt;
@@ -386,12 +386,12 @@ React를 현재 공부중인데, 지식을 공유한다고 생각하고 하나 �
       <title type="html">Git 공부 2일차</title>
       
       
-      <link href="http://localhost:4000/2019/12/12/second-of-git/" rel="alternate" type="text/html" title="Git 공부 2일차" />
+      <link href="https://heumheum2.github.io/2019/12/12/second-of-git/" rel="alternate" type="text/html" title="Git 공부 2일차" />
       
       <published>2019-12-12T00:00:00+00:00</published>
       <updated>2019-12-12T00:00:00+00:00</updated>
-      <id>http://localhost:4000/2019/12/12/second-of-git</id>
-      <content type="html" xml:base="http://localhost:4000/2019/12/12/second-of-git/">&lt;p&gt;이번 세미나의 중심 내용은 &lt;code class=&quot;highlighter-rouge&quot;&gt;git reset&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout&lt;/code&gt; 명령어와 &lt;strong&gt;HEAD&lt;/strong&gt;, &lt;strong&gt;master&lt;/strong&gt; 였다.&lt;/p&gt;
+      <id>https://heumheum2.github.io/2019/12/12/second-of-git</id>
+      <content type="html" xml:base="https://heumheum2.github.io/2019/12/12/second-of-git/">&lt;p&gt;이번 세미나의 중심 내용은 &lt;code class=&quot;highlighter-rouge&quot;&gt;git reset&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout&lt;/code&gt; 명령어와 &lt;strong&gt;HEAD&lt;/strong&gt;, &lt;strong&gt;master&lt;/strong&gt; 였다.&lt;/p&gt;
 
 &lt;h3&gt;$ git log&lt;/h3&gt;
 
@@ -577,12 +577,12 @@ Date:   Wed Dec 11 15:23:31 2019 +0900
       <title type="html">Git 공부 1일차</title>
       
       
-      <link href="http://localhost:4000/2019/12/11/first-of-git/" rel="alternate" type="text/html" title="Git 공부 1일차" />
+      <link href="https://heumheum2.github.io/2019/12/11/first-of-git/" rel="alternate" type="text/html" title="Git 공부 1일차" />
       
       <published>2019-12-11T00:00:00+00:00</published>
       <updated>2019-12-11T00:00:00+00:00</updated>
-      <id>http://localhost:4000/2019/12/11/first-of-git</id>
-      <content type="html" xml:base="http://localhost:4000/2019/12/11/first-of-git/">&lt;p&gt;Git을 사용해 본 경험은 로컬 저장소에 진행하고 있는 프로젝트를 저장시키고, &lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt; 라는 명령어를 사용해 GitHub에 올리는게 전부였다.
+      <id>https://heumheum2.github.io/2019/12/11/first-of-git</id>
+      <content type="html" xml:base="https://heumheum2.github.io/2019/12/11/first-of-git/">&lt;p&gt;Git을 사용해 본 경험은 로컬 저장소에 진행하고 있는 프로젝트를 저장시키고, &lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt; 라는 명령어를 사용해 GitHub에 올리는게 전부였다.
 Facebook 생활코딩 커뮤니티를 살펴보는 중 &lt;a href=&quot;https://onoffmix.com/event/203172&quot;&gt;KISA 핀테크 기술지원센터&lt;/a&gt;에서 Git에 대한 세미나가 열린다는 글을 보았다.
 가격은 &lt;strong&gt;무료&lt;/strong&gt; 였기에 이 기회에 Git에 대해 배우고자 참석했다.&lt;/p&gt;
 
