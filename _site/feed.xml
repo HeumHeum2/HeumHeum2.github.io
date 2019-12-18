@@ -5,7 +5,7 @@
   
   <link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko" />
-  <updated>2019-12-18T12:46:05+00:00</updated>
+  <updated>2019-12-18T12:48:33+00:00</updated>
   <id>http://localhost:4000//</id>
 
   
@@ -37,7 +37,7 @@
       <updated>2019-12-18T00:00:00+00:00</updated>
       <id>http://localhost:4000/2019/12/18/command-git</id>
       <content type="html" xml:base="http://localhost:4000/2019/12/18/command-git/">&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;git init
-&lt;span class=&quot;c&quot;&gt;# .git 만듦.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 현재 디렉토리 위치에 .git 만듦.&lt;/span&gt;
 
 git status
 &lt;span class=&quot;c&quot;&gt;# 상태 확인.&lt;/span&gt;
@@ -97,7 +97,7 @@ git pull
       
 
       
-        <summary type="html">git init # .git 만듦. git status # 상태 확인. git add &amp;lt;files name&amp;gt; # working Directory에 있는 작업들을 Stage Area에 복사함. git commit -m &amp;lt;message&amp;gt; # Stage Area에 있는 작업들을 .git에 저장함. git log # commit 된 기록들을 보여줌. git reset --hard &amp;lt;Commit ID&amp;gt; # master의 내용을 입력한 Commit ID로 바뀌어 복원 및 삭제가 일어남. git checkout &amp;lt;Commit ID or branch&amp;gt; # HEAD가 입력한 Commit ID 또는 branch로 바뀌어 현재 작업하고 있는 버전이 바뀜. git branch &amp;lt;branch name&amp;gt; # 현재 위치한 곳에 branch를 만듬. git merge &amp;lt;A branch located elsewhere&amp;gt; # 현재 위치한 곳에서 다른 곳에 위치한 branch와 합침. git remote add &amp;lt;remote name&amp;gt; &amp;lt;URL or SSH&amp;gt; # 원격저장소 경로 지정. git push -u &amp;lt;remote name&amp;gt; &amp;lt;branch&amp;gt; # 원격저장소에 현재 branch로 파일들을 올림. git pull # 원격저장소에서 파일들을 가져옴.</summary>
+        <summary type="html">git init # 현재 디렉토리 위치에 .git 만듦. git status # 상태 확인. git add &amp;lt;files name&amp;gt; # working Directory에 있는 작업들을 Stage Area에 복사함. git commit -m &amp;lt;message&amp;gt; # Stage Area에 있는 작업들을 .git에 저장함. git log # commit 된 기록들을 보여줌. git reset --hard &amp;lt;Commit ID&amp;gt; # master의 내용을 입력한 Commit ID로 바뀌어 복원 및 삭제가 일어남. git checkout &amp;lt;Commit ID or branch&amp;gt; # HEAD가 입력한 Commit ID 또는 branch로 바뀌어 현재 작업하고 있는 버전이 바뀜. git branch &amp;lt;branch name&amp;gt; # 현재 위치한 곳에 branch를 만듬. git merge &amp;lt;A branch located elsewhere&amp;gt; # 현재 위치한 곳에서 다른 곳에 위치한 branch와 합침. git remote add &amp;lt;remote name&amp;gt; &amp;lt;URL or SSH&amp;gt; # 원격저장소 경로 지정. git push -u &amp;lt;remote name&amp;gt; &amp;lt;branch&amp;gt; # 원격저장소에 현재 branch로 파일들을 올림. git pull # 원격저장소에서 파일들을 가져옴.</summary>
       
 
       

@@ -7,7 +7,7 @@ categories: Git 공부 명령어
 
 {% highlight bash %}
 git init
-# .git 만듦.
+# 현재 디렉토리 위치에 .git 만듦.
 
 git status
 # 상태 확인.
