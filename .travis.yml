@@ -7,7 +7,7 @@ addons:
     packages:
     - openjdk-8-jre
 before_install:
-- gem update --system
+- yes | gem update --system
 - gem install bundler
 - nvm install node
 install:
