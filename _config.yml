@@ -41,10 +41,10 @@ comments: true
 disqus_shortname: Heum's blog
 
 # Plugins
-plugins:
-  - jekyll-archives
-  - jekyll-paginate
-  - jekyll-sitemap
+# plugins:
+#   - jekyll-archives
+#   - jekyll-paginate
+#   - jekyll-sitemap
 
 # Build settings
 markdown: kramdown
