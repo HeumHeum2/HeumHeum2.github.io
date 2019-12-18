@@ -49,6 +49,7 @@ plugins:
 
 # Build settings
 markdown: kramdown
+remote_theme: benbalter/retlab
 excerpt_separator: "<!-- more -->"
 
 # Outputting
